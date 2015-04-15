@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/PlugboardBombe.swift"
+            timestampString = "447331073.944545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "plugboardForLoops(_:text:enText:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/Rotor.swift"
+            timestampString = "447331073.944545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "resetRotor(andAdd:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/ViewController.swift"
+            timestampString = "447441180.818981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "creatPossibleOrders(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/Rotor.swift"
+            timestampString = "447376189.195502"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "generatePossibleOrders(_:remainder:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.Rotor.rotorSetting.getter : MacEnigma.RotorSetting"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/Rotor.swift"
+                  timestampString = "447376249.458124"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.Rotor.rotorSetting.setter : MacEnigma.RotorSetting"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/Rotor.swift"
+                  timestampString = "447376249.458322"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.Rotor.rotorSetting.materializeForSet : MacEnigma.RotorSetting"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/Rotor.swift"
+                  timestampString = "447376249.458493"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/RotorBombe.swift"
+            timestampString = "449089968.545665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "forRotorPositions(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/RotorBombe.swift"
+            timestampString = "449089968.545665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "forRotorPositions(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/PlugboardBombe.swift"
+            timestampString = "447441924.112536"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "plugboardForLoops(_:text:enText:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.PlugboardBombe.plugboardForLoops (MacEnigma.PlugboardBombe)(Swift.Array&lt;(connections : Swift.Array&lt;MacEnigma.PlugboardBombe.LoopConnection&gt;, indexRange : Swift.Range&lt;Swift.Int&gt;, closed : Swift.Bool)&gt;, text : Swift.String, enText : Swift.String) -&gt; Swift.Optional&lt;MacEnigma.Plugboard&gt;"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/PlugboardBombe.swift"
+                  timestampString = "447442107.902799"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "3400">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigmaTests.PlugboardBombe.plugboardForLoops (MacEnigmaTests.PlugboardBombe)(Swift.Array&lt;(connections : Swift.Array&lt;MacEnigmaTests.PlugboardBombe.LoopConnection&gt;, indexRange : Swift.Range&lt;Swift.Int&gt;, closed : Swift.Bool)&gt;, text : Swift.String, enText : Swift.String) -&gt; Swift.Optional&lt;MacEnigmaTests.Plugboard&gt;"
+                  moduleName = "MacEnigmaTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/PlugboardBombe.swift"
+                  timestampString = "447442107.994709"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "3400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/PlugboardBombe.swift"
+            timestampString = "447442003.849427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "assumtionForLoop(_:pastDeductions:startIndex:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.PlugboardBombe.(assumtionForLoop in _E9FE6D7AE2BDA486EFC8839D91DF420B) (MacEnigma.PlugboardBombe)(Swift.Array&lt;MacEnigma.PlugboardBombe.LoopConnection&gt;, pastDeductions : MacEnigma.PlugboardBombe.(Deductions in _E9FE6D7AE2BDA486EFC8839D91DF420B), startIndex : Swift.Int) -&gt; Swift.Optional&lt;(deductions : MacEnigma.PlugboardBombe.(Deductions in _E9FE6D7AE2BDA486EFC8839D91DF420B), assumention : Swift.Int)&gt;"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/PlugboardBombe.swift"
+                  timestampString = "447442099.181383"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigmaTests.PlugboardBombe.(assumtionForLoop in _675D4BFE347841E55C5E008B8850ACDE) (MacEnigmaTests.PlugboardBombe)(Swift.Array&lt;MacEnigmaTests.PlugboardBombe.LoopConnection&gt;, pastDeductions : MacEnigmaTests.PlugboardBombe.(Deductions in _675D4BFE347841E55C5E008B8850ACDE), startIndex : Swift.Int) -&gt; Swift.Optional&lt;(deductions : MacEnigmaTests.PlugboardBombe.(Deductions in _675D4BFE347841E55C5E008B8850ACDE), assumention : Swift.Int)&gt;"
+                  moduleName = "MacEnigmaTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/PlugboardBombe.swift"
+                  timestampString = "447442099.333392"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/PlugboardBombe.swift"
+            timestampString = "447442029.968737"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "assumtionForLoop(_:pastDeductions:startIndex:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.PlugboardBombe.(assumtionForLoop in _E9FE6D7AE2BDA486EFC8839D91DF420B) (MacEnigma.PlugboardBombe)(Swift.Array&lt;MacEnigma.PlugboardBombe.LoopConnection&gt;, pastDeductions : MacEnigma.PlugboardBombe.(Deductions in _E9FE6D7AE2BDA486EFC8839D91DF420B), startIndex : Swift.Int) -&gt; Swift.Optional&lt;(deductions : MacEnigma.PlugboardBombe.(Deductions in _E9FE6D7AE2BDA486EFC8839D91DF420B), assumention : Swift.Int)&gt;"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/PlugboardBombe.swift"
+                  timestampString = "447442099.182154"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1293">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigmaTests.PlugboardBombe.(assumtionForLoop in _675D4BFE347841E55C5E008B8850ACDE) (MacEnigmaTests.PlugboardBombe)(Swift.Array&lt;MacEnigmaTests.PlugboardBombe.LoopConnection&gt;, pastDeductions : MacEnigmaTests.PlugboardBombe.(Deductions in _675D4BFE347841E55C5E008B8850ACDE), startIndex : Swift.Int) -&gt; Swift.Optional&lt;(deductions : MacEnigmaTests.PlugboardBombe.(Deductions in _675D4BFE347841E55C5E008B8850ACDE), assumention : Swift.Int)&gt;"
+                  moduleName = "MacEnigmaTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/PlugboardBombe.swift"
+                  timestampString = "447442099.333654"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1293">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigmaTests/MacEnigmaTests.swift"
+            timestampString = "447514423.609256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "testResetRotorPosition()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigmaTests.MacEnigmaTests.testResetRotorPosition (MacEnigmaTests.MacEnigmaTests)() -&gt; ()"
+                  moduleName = "MacEnigmaTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigmaTests/MacEnigmaTests.swift"
+                  timestampString = "447513125.827052"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "221"
+                  endingLineNumber = "221"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigmaTests.MacEnigmaTests.(testResetRotorPosition (MacEnigmaTests.MacEnigmaTests) -&gt; () -&gt; ()).(implicit closure #1)"
+                  moduleName = "MacEnigmaTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigmaTests/MacEnigmaTests.swift"
+                  timestampString = "447513125.827435"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "221"
+                  endingLineNumber = "221"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/Rotor.swift"
+            timestampString = "447513254.018993"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "resetRotor(andAdd:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.Rotor.resetRotor (MacEnigma.Rotor)(andAdd : Swift.Int) -&gt; ()"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/Rotor.swift"
+                  timestampString = "447513388.000617"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigmaTests.Rotor.resetRotor (MacEnigmaTests.Rotor)(andAdd : Swift.Int) -&gt; ()"
+                  moduleName = "MacEnigmaTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/Rotor.swift"
+                  timestampString = "447513388.118835"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigmaTests/MacEnigmaTests.swift"
+            timestampString = "447514423.609256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "testResetRotorPosition()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigmaTests/MacEnigmaTests.swift"
+            timestampString = "447514423.609256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "testRotorPosition()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/Enigma.swift"
+            timestampString = "447513931.634342"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "encodeLetter(_:usePlugboard:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigma.Enigma.encodeLetter (MacEnigma.Enigma)(Swift.Character, usePlugboard : Swift.Bool) -&gt; Swift.Character"
+                  moduleName = "MacEnigma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/Enigma.swift"
+                  timestampString = "447514513.584371"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "55">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacEnigmaTests.Enigma.encodeLetter (MacEnigmaTests.Enigma)(Swift.Character, usePlugboard : Swift.Bool) -&gt; Swift.Character"
+                  moduleName = "MacEnigmaTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leomehlig/Development/Xcode/MacEnigma/MacEnigma/Enigma.swift"
+                  timestampString = "447514513.71914"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "55">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/ViewController.swift"
+            timestampString = "449085138.067885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "rotorb()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacEnigma/RotorBombe.swift"
+            timestampString = "449086127.198923"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "RotorBombe"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
