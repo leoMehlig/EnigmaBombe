@@ -24,7 +24,9 @@ class EnigmaKeyboardKey: UIButton {
     init(key letter: Character) {
         key = letter
         super.init(frame: CGRectZero)
+        
         self.contentMode = UIViewContentMode.Redraw
+        
         //Tap
         self.addTarget(self, action: "beginTouch", forControlEvents: .TouchDown)
         self.addTarget(self, action: "beginTouch", forControlEvents: .TouchDragEnter)

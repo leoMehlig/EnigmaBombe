@@ -36,16 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-Av-dAt">
-                                <rect key="frame" x="16" y="194" width="568" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="JF5-FF-gaK"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-fg-4bs" customClass="EnigmaKeywordView" customModule="iEnigma" customModuleProvider="target">
                                 <rect key="frame" x="16" y="316" width="568" height="227"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,7 +77,7 @@
                                     <constraint firstAttribute="height" priority="750" constant="50" id="tHA-cy-K1i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -145,7 +135,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-gM-Fkv">
                                 <rect key="frame" x="16" y="136" width="568" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -163,6 +152,15 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-Av-dAt">
+                                <rect key="frame" x="16" y="194" width="568" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="JF5-FF-gaK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.28235294117647058" green="0.27843137254901962" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -241,11 +239,11 @@
                                 <exclude reference="be8-G1-SFt"/>
                                 <exclude reference="KPV-Vf-iqT"/>
                                 <exclude reference="oP0-fq-Lrh"/>
+                                <exclude reference="gTk-47-bSP"/>
                                 <exclude reference="2KH-il-BHg"/>
                                 <exclude reference="65W-hM-Q7X"/>
                                 <exclude reference="nJ5-Zy-qdL"/>
                                 <exclude reference="ug5-aO-eTD"/>
-                                <exclude reference="gTk-47-bSP"/>
                                 <exclude reference="B56-uK-K46"/>
                                 <exclude reference="Hj4-3V-NdF"/>
                                 <exclude reference="NSY-kC-kq0"/>
@@ -258,6 +256,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Enigma" id="e1e-Hh-WXA"/>
                     <connections>
+                        <outlet property="encodeTextView" destination="mzD-gM-Fkv" id="QJW-3a-EIP"/>
+                        <outlet property="inputTextView" destination="BD6-Av-dAt" id="Emy-Q3-qGC"/>
                         <outlet property="keyboard" destination="qbk-fg-4bs" id="QSR-0d-lDR"/>
                     </connections>
                 </viewController>

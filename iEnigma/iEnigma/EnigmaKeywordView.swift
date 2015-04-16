@@ -44,9 +44,7 @@ class EnigmaKeywordView: UIView {
         }
     }
     
-    func keyTapped(sender: EnigmaKeyboardKey) {
-        keyTappedAction?(sender.key)
-    }
+    func keyTapped(sender: EnigmaKeyboardKey) { keyTappedAction?(sender.key) }
     
     
 }

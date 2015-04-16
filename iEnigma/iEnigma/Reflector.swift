@@ -57,25 +57,19 @@ class Reflector: Printable {
     
     var type: ReflectorType?
     let pairs: [Int]
-    private init(setting: [ReflectorPair]) {
-        var temp = [Int](count: 26, repeatedValue: 0)
-        for p in setting {
-            temp.replaceRange(p.position1..<p.position1+1, with: [p.position2])
-            temp.replaceRange(p.position2..<p.position2+1, with: [p.position1])
-
-        }
-        pairs = temp
+    private init(setting: [Int]) {
+        pairs = setting
     }
     
     
     convenience init(type t: ReflectorType) {
         switch t {
         case .A:
-            self.init(setting: [ReflectorPair("e", "a"), ReflectorPair("j", "b"), ReflectorPair("m", "c"), ReflectorPair("z", "d"), ReflectorPair("l", "f"), ReflectorPair("y", "g"), ReflectorPair("x", "h"), ReflectorPair("v", "i"), ReflectorPair("w", "k"), ReflectorPair("r", "n"), ReflectorPair("q", "o"), ReflectorPair("u", "p"), ReflectorPair("t", "s")])
+            self.init(setting: [4, 9, 12, 25, 0, 11, 24, 23, 21, 1, 22, 5, 2, 17, 16, 20, 14, 13, 19, 18, 15, 8, 10, 7, 6, 3])
         case .B:
-            self.init(setting: [ReflectorPair("y", "a"), ReflectorPair("r", "b"), ReflectorPair("u", "c"), ReflectorPair("h", "d"), ReflectorPair("q", "e"), ReflectorPair("s", "f"), ReflectorPair("l", "g"), ReflectorPair("p", "i"), ReflectorPair("x", "j"), ReflectorPair("n", "k"), ReflectorPair("o", "m"), ReflectorPair("z", "t"), ReflectorPair("w", "v")])
+            self.init(setting: [24, 17, 20, 7, 16, 18, 11, 3, 15, 23, 13, 6, 14, 10, 12, 8, 4, 1, 5, 25, 2, 22, 21, 9, 0, 19])
         case .C:
-            self.init(setting: [ReflectorPair("f", "a"), ReflectorPair("v", "b"), ReflectorPair("p", "c"), ReflectorPair("j", "d"), ReflectorPair("i", "e"), ReflectorPair("o", "g"), ReflectorPair("y", "h"), ReflectorPair("r", "k"), ReflectorPair("z", "l"), ReflectorPair("x", "m"), ReflectorPair("w", "n"), ReflectorPair("t", "q"), ReflectorPair("u", "s")])
+            self.init(setting: [5, 21, 15, 9, 8, 0, 14, 24, 4, 3, 17, 25, 23, 22, 6, 2, 19, 10, 20, 16, 18, 1, 13, 12, 7, 11])
         }
         type = t
 

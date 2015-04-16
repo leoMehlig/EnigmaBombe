@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class MacEnigmaTests: XCTestCase {
+class iEnigmaTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,8 +21,8 @@ class MacEnigmaTests: XCTestCase {
         super.tearDown()
     }
     func testEnigma() {
-        let text = "aaaaa"
-        let exResult = "ftzmg"
+        let text = "aaaaa".uppercaseString
+        let exResult = "ftzmg".uppercaseString
         
         //Setting up Enigma
         let enigma = Enigma(ref: .B, rotors: .I, .II, .III)
@@ -35,13 +35,13 @@ class MacEnigmaTests: XCTestCase {
     }
     func testOffset() {
         //Encode Text & Expected Result
-        let text = "aaaaa"
-        let exResult = "iptoi"
+        let text = "aaaaa".uppercaseString
+        let exResult = "iptoi".uppercaseString
         
         //Setting up Enigma
         let enigma = Enigma(ref: .B, rotors: .I, .II, .III)
         enigma.rotor(0)?.offsetPosition = 7
-        enigma.rotor(0)?.rotorPositionLetter = "o"
+        enigma.rotor(0)?.rotorPositionLetter = "O"
         
         //Encoding String
         let encodeStr = enigma.encodeText(text)
@@ -52,14 +52,14 @@ class MacEnigmaTests: XCTestCase {
     
     func testRotorPosition() {
         //Encode Text & Expected Result
-        let text = "helloworld"
-        let exResult = "jamhxabhjz"
+        let text = "helloworld".uppercaseString
+        let exResult = "jamhxabhjz".uppercaseString
         
         //Setting up Enigma
         let enigma = Enigma(ref: .A, rotors: .III, .II, .I)
-        enigma.rotor(0)?.rotorPositionLetter = "o"
-        enigma.rotor(1)?.rotorPositionLetter = "f"
-        enigma.rotor(2)?.rotorPositionLetter = "k"
+        enigma.rotor(0)?.rotorPositionLetter = "O"
+        enigma.rotor(1)?.rotorPositionLetter = "F"
+        enigma.rotor(2)?.rotorPositionLetter = "K"
         
         //Encoding String
         let encodeStr = enigma.encodeText(text)
@@ -71,15 +71,15 @@ class MacEnigmaTests: XCTestCase {
     
     func testPlugboard() {
         //Encode Text & Expected Result
-        let text = "helloworld"
-        let exResult = "pvdilpjnja"
+        let text = "helloworld".uppercaseString
+        let exResult = "pvdilpjnja".uppercaseString
         
         //Setting up Enigma
         let enigma = Enigma(ref: .A, rotors: .III, .II, .I)
-        enigma.plugboard.pairs = [PlugboardPair("a","v"), PlugboardPair("d", "m"), PlugboardPair("f", "t"), PlugboardPair("h", "i"), PlugboardPair("k", "o"), PlugboardPair("p", "s"), PlugboardPair("q", "x"), PlugboardPair("r", "w")]
-        enigma.rotor(0)?.rotorPositionLetter = "o"
-        enigma.rotor(1)?.rotorPositionLetter = "f"
-        enigma.rotor(2)?.rotorPositionLetter = "k"
+        enigma.plugboard.pairs = [PlugboardPair("A","V"), PlugboardPair("D", "M"), PlugboardPair("F", "T"), PlugboardPair("H", "I"), PlugboardPair("K", "O"), PlugboardPair("P", "S"), PlugboardPair("Q", "X"), PlugboardPair("R", "W")]
+        enigma.rotor(0)?.rotorPositionLetter = "O"
+        enigma.rotor(1)?.rotorPositionLetter = "F"
+        enigma.rotor(2)?.rotorPositionLetter = "K"
         
         //Encoding String
         let encodeStr = enigma.encodeText(text)
@@ -91,15 +91,15 @@ class MacEnigmaTests: XCTestCase {
     func testEnigmaPerformence() {
         
         //Encode Text & Expected Result
-        let text = "hallojedoxianerdankefrdiefreundlicheaufnahmeineuerteamichbinsehrangetanvonderstimmungderkulturunddermotivationundfreuemichaufeinsupererfolgreichesmiteuchichwerdeindenkommendenwocheninregelmssigenabstndenmeineerfahrungenmiteuchteilendamitwirauchdirektmiteinanderkommunizierenknnenmchteicheuchbittenmichbereurenskypeaccounteinzuladenichbineingrosserfanvoninstantmessagingundvideokommunikationdasverringertdiedistanzenundschafftmehrnheanbeimeinskypenameunterdemihrmichfindenknntkayingogrevevielegrssekay"
-        let exResult = "fmjxqmysvsdttubnffatqqrcqcblmikdlqdavyiztrdxnhvdqmilbdcdgwchjurbzzfaakimrfqdibhghijdnilplgwqidjjpamwotjgurywrocwfecajnwfuducmcqdatazotkjmixyufypxchblqsyzcrkbryotfrmroganoouqymzuybxpfrkmdktdkuccbpxvfuayvpdiorgnhhjyaegvkgrsjqozswahprhvkaupzwxbjjkoazlppavqvlfzukgcbhixlmtgevohcnzlxoppmgqjjdcfxjeuegyadcbpalwnelultwifyrvabmqohxjrxhtygroyedscuvofdagdaluubolqxraliirzlrahaxovqmkpvurcflawtivumiudhontfrhzdcwtphiexigzxvjpnuagnelipvpgqlifmyfwjrkejwjjxngnrfguiouqwnygfhtuyzvqdxkmpfpmwdhkeurdsmeotbtczphlbcduhqf"
+        let text = "hallojedoxianerdankefrdiefreundlicheaufnahmeineuerteamichbinsehrangetanvonderstimmungderkulturunddermotivationundfreuemichaufeinsupererfolgreichesmiteuchichwerdeindenkommendenwocheninregelmssigenabstndenmeineerfahrungenmiteuchteilendamitwirauchdirektmiteinanderkommunizierenknnenmchteicheuchbittenmichbereurenskypeaccounteinzuladenichbineingrosserfanvoninstantmessagingundvideokommunikationdasverringertdiedistanzenundschafftmehrnheanbeimeinskypenameunterdemihrmichfindenknntkayingogrevevielegrssekay".uppercaseString
+        let exResult = "fmjxqmysvsdttubnffatqqrcqcblmikdlqdavyiztrdxnhvdqmilbdcdgwchjurbzzfaakimrfqdibhghijdnilplgwqidjjpamwotjgurywrocwfecajnwfuducmcqdatazotkjmixyufypxchblqsyzcrkbryotfrmroganoouqymzuybxpfrkmdktdkuccbpxvfuayvpdiorgnhhjyaegvkgrsjqozswahprhvkaupzwxbjjkoazlppavqvlfzukgcbhixlmtgevohcnzlxoppmgqjjdcfxjeuegyadcbpalwnelultwifyrvabmqohxjrxhtygroyedscuvofdagdaluubolqxraliirzlrahaxovqmkpvurcflawtivumiudhontfrhzdcwtphiexigzxvjpnuagnelipvpgqlifmyfwjrkejwjjxngnrfguiouqwnygfhtuyzvqdxkmpfpmwdhkeurdsmeotbtczphlbcduhqf".uppercaseString
         measureBlock {
             //Setting up Enigma
             let enigma = Enigma(ref: .A, rotors: .III, .II, .I)
-            enigma.plugboard.pairs = [PlugboardPair("a","v"), PlugboardPair("d", "m"), PlugboardPair("f", "t"), PlugboardPair("h", "i"), PlugboardPair("k", "o"), PlugboardPair("p", "s"), PlugboardPair("q", "x"), PlugboardPair("r", "w")]
-            enigma.rotor(0)?.rotorPositionLetter = "o"
-            enigma.rotor(1)?.rotorPositionLetter = "f"
-            enigma.rotor(2)?.rotorPositionLetter = "k"
+            enigma.plugboard.pairs = [PlugboardPair("A","V"), PlugboardPair("D", "M"), PlugboardPair("F", "T"), PlugboardPair("H", "I"), PlugboardPair("K", "O"), PlugboardPair("P", "S"), PlugboardPair("Q", "X"), PlugboardPair("R", "W")]
+            enigma.rotor(0)?.rotorPositionLetter = "O"
+            enigma.rotor(1)?.rotorPositionLetter = "F"
+            enigma.rotor(2)?.rotorPositionLetter = "K"
             enigma.rotor(0)?.offsetPosition = 7
             enigma.rotor(1)?.offsetPosition = 24
             enigma.rotor(2)?.offsetPosition = 10
@@ -118,7 +118,7 @@ class MacEnigmaTests: XCTestCase {
         let testWord = "jedox"
         let bombe = Bombe()
         measureBlock {
-            let t = bombe.completUnmatchingPartsOfText(testStr, toWord: testWord)
+            let t = bombe.completUnmatchingPartsOfText(testStr.uppercaseString, toWord: testWord.uppercaseString)
             
             XCTAssert(t.count == 406, "\(t)")
         }
@@ -131,9 +131,9 @@ class MacEnigmaTests: XCTestCase {
     }
     
     func testBombePlugboard() {
-        let testText = "anmastervonwetterbericht"
+        let testText = "anmastervonwetterbericht".uppercaseString
         let enigma = Enigma(ref: .A, rotors: .I, .II, .III)
-        enigma.plugboard.pairs = [PlugboardPair("a","v"), PlugboardPair("d", "m"), PlugboardPair("f", "t"), PlugboardPair("h", "i"), PlugboardPair("k", "o"), PlugboardPair("p", "s"), PlugboardPair("q", "x"), PlugboardPair("r", "w")]
+        enigma.plugboard.pairs = [PlugboardPair("A","V"), PlugboardPair("D", "M"), PlugboardPair("F", "T"), PlugboardPair("H", "I"), PlugboardPair("K", "O"), PlugboardPair("P", "S"), PlugboardPair("Q", "X"), PlugboardPair("R", "W")]
         let encodedText = enigma.encodeText(testText)
         if let loops = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {
             //measureBlock {
@@ -146,9 +146,9 @@ class MacEnigmaTests: XCTestCase {
     }
     
     func testBombePlugboardWrongPairs() {
-        let testText = "helloworld"
+        let testText = ("helloworld").uppercaseString
         let enigma = Enigma(ref: .A, rotors: .I, .II, .III)
-        enigma.plugboard.pairs = [PlugboardPair("l","v"), PlugboardPair("d", "m"), PlugboardPair("f", "t"), PlugboardPair("h", "i"), PlugboardPair("k", "o"), PlugboardPair("p", "s"), PlugboardPair("q", "x"), PlugboardPair("r", "w")]
+        enigma.plugboard.pairs = [PlugboardPair("L","V"), PlugboardPair("D", "M"), PlugboardPair("F", "T"), PlugboardPair("H", "I"), PlugboardPair("K", "O"), PlugboardPair("P", "S"), PlugboardPair("Q", "X"), PlugboardPair("R", "W")]
         let encodedText = enigma.encodeText(testText)
         if let loops = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {
             measureBlock {
@@ -160,9 +160,9 @@ class MacEnigmaTests: XCTestCase {
     
     func testStepBack() {
         let enigma = Enigma(ref: .A, rotors: .I, .II, .III)
-        let startI: Character = "e"
-        let startII: Character = "h"
-        let startIII: Character = "y"
+        let startI: Character = "E"
+        let startII: Character = "H"
+        let startIII: Character = "Y"
         enigma.rotor(0)?.rotorPositionLetter = startI
         enigma.rotor(1)?.rotorPositionLetter = startII
         enigma.rotor(2)?.rotorPositionLetter = startIII
@@ -181,9 +181,9 @@ class MacEnigmaTests: XCTestCase {
     
     func testLoopDeductionPerformance() {
         measureBlock {
-            let testText = "wearethewatchersonthewall"
+            let testText = ("wearethewatchersonthewall").uppercaseString
             let enigma = Enigma(ref: .A, rotors: .I, .II, .III)
-            enigma.plugboard.pairs = [PlugboardPair("l","v"), PlugboardPair("d", "m"), PlugboardPair("f", "t"), PlugboardPair("h", "i"), PlugboardPair("k", "o"), PlugboardPair("p", "s"), PlugboardPair("q", "x"), PlugboardPair("r", "w")]
+            enigma.plugboard.pairs = [PlugboardPair("L","V"), PlugboardPair("D", "M"), PlugboardPair("F", "T"), PlugboardPair("H", "I"), PlugboardPair("K", "O"), PlugboardPair("P", "S"), PlugboardPair("Q", "X"), PlugboardPair("R", "W")]
             let encodedText = enigma.encodeText(testText)
             let bombe = PlugboardBombe(enigma: Enigma(ref: .A, rotors: .I, .II, .III))
             if let con = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {
@@ -197,12 +197,12 @@ class MacEnigmaTests: XCTestCase {
     
     func stestBombePerformance() {
         measureBlock {
-            let testText = "wearethewatchersonthewall"
+            let testText = ("wearethewatchersonthewall").uppercaseString
             let enigma = Enigma(ref: .A, rotors: .I, .II, .III)
-            enigma.rotor(0)?.rotorPositionLetter = "f"
-            enigma.rotor(1)?.rotorPositionLetter = "q"
-            enigma.rotor(2)?.rotorPositionLetter = "c"
-            enigma.plugboard.pairs = [PlugboardPair("a","v"), PlugboardPair("d", "m"), PlugboardPair("f", "t"), PlugboardPair("h", "i"), PlugboardPair("k", "o"), PlugboardPair("p", "s"), PlugboardPair("q", "x"), PlugboardPair("r", "w")]
+            enigma.rotor(0)?.rotorPositionLetter = "F"
+            enigma.rotor(1)?.rotorPositionLetter = "Q"
+            enigma.rotor(2)?.rotorPositionLetter = "C"
+            enigma.plugboard.pairs = [PlugboardPair("A","V"), PlugboardPair("D", "M"), PlugboardPair("F", "T"), PlugboardPair("H", "I"), PlugboardPair("K", "O"), PlugboardPair("P", "S"), PlugboardPair("Q", "X"), PlugboardPair("R", "W")]
             let bombe = PlugboardBombe(enigma: enigma)
             let encodedText = enigma.encodeText(testText)
             if let loops = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {

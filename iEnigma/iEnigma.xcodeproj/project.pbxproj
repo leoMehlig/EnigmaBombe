@@ -30,6 +30,7 @@
 		7FCAFB0E1ADF0D8500554D64 /* Bombe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCAFB001ADF0CFC00554D64 /* Bombe.swift */; };
 		7FCAFB0F1ADF0D8500554D64 /* RotorBombe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCAFB011ADF0CFC00554D64 /* RotorBombe.swift */; };
 		7FCAFB101ADF0D8500554D64 /* PlugboardBombe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCAFB021ADF0CFC00554D64 /* PlugboardBombe.swift */; };
+		7FF3BC961ADFD97A0097D09A /* EnigmaSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BC951ADFD97A0097D09A /* EnigmaSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		7FCAFB001ADF0CFC00554D64 /* Bombe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bombe.swift; sourceTree = "<group>"; };
 		7FCAFB011ADF0CFC00554D64 /* RotorBombe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorBombe.swift; sourceTree = "<group>"; };
 		7FCAFB021ADF0CFC00554D64 /* PlugboardBombe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlugboardBombe.swift; sourceTree = "<group>"; };
+		7FF3BC951ADFD97A0097D09A /* EnigmaSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,15 +106,12 @@
 		7F1941EF1ADD694500647CC9 /* iEnigma */ = {
 			isa = PBXGroup;
 			children = (
-				7F1941F21ADD694500647CC9 /* AppDelegate.swift */,
+				7FF3BC981ADFD9C30097D09A /* Interface */,
 				7FCAFAF91ADF002300554D64 /* ViewController */,
 				7FCAFAF41ADEE3F300554D64 /* Views */,
+				7FF3BC971ADFD9BB0097D09A /* Helper */,
 				7FCAFB111ADF0D9100554D64 /* Enigma */,
 				7FCAFB121ADF0D9C00554D64 /* Bombe */,
-				7F1941F61ADD694500647CC9 /* Main.storyboard */,
-				7F1941F91ADD694500647CC9 /* Images.xcassets */,
-				7F1941FB1ADD694500647CC9 /* LaunchScreen.xib */,
-				7FCAFAF21ADEDF0D00554D64 /* EnigmaConstants.swift */,
 				7F1941F01ADD694500647CC9 /* Supporting Files */,
 			);
 			path = iEnigma;
@@ -121,6 +120,7 @@
 		7F1941F01ADD694500647CC9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7F1941F21ADD694500647CC9 /* AppDelegate.swift */,
 				7F1941F11ADD694500647CC9 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -179,6 +179,25 @@
 				7FCAFB021ADF0CFC00554D64 /* PlugboardBombe.swift */,
 			);
 			name = Bombe;
+			sourceTree = "<group>";
+		};
+		7FF3BC971ADFD9BB0097D09A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7FCAFAF21ADEDF0D00554D64 /* EnigmaConstants.swift */,
+				7FF3BC951ADFD97A0097D09A /* EnigmaSettings.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		7FF3BC981ADFD9C30097D09A /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				7F1941F61ADD694500647CC9 /* Main.storyboard */,
+				7F1941F91ADD694500647CC9 /* Images.xcassets */,
+				7F1941FB1ADD694500647CC9 /* LaunchScreen.xib */,
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +310,7 @@
 				7FCAFB071ADF0CFC00554D64 /* Bombe.swift in Sources */,
 				7FCAFB091ADF0CFC00554D64 /* PlugboardBombe.swift in Sources */,
 				7FCAFB061ADF0CFC00554D64 /* Reflector.swift in Sources */,
+				7FF3BC961ADFD97A0097D09A /* EnigmaSettings.swift in Sources */,
 				7F1941F31ADD694500647CC9 /* AppDelegate.swift in Sources */,
 				7FCAFB081ADF0CFC00554D64 /* RotorBombe.swift in Sources */,
 			);
