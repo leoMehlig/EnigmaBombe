@@ -17,6 +17,12 @@ struct EnigmaSettings {
         static let plugboard = "plg"
     }
     
+    struct Notifications {
+        static let rotorPositonChanged = ["r1not", "r2not", "r3not"]
+        static let rotorPositonOldValue = "rPold"
+        static let plugboardChanged = "plgchange"
+    }
+    
     private static var userDefault: NSUserDefaults {
         return NSUserDefaults.standardUserDefaults()
     }
@@ -47,7 +53,18 @@ struct EnigmaSettings {
             return userDefault.objectForKey(Keys.rotorPositons) as? [Int] ?? [0, 0, 0]
         }
         set {
+            let rp = rotorPositions
             userDefault.setObject(newValue, forKey: Keys.rotorPositons)
+            for (idx, p) in enumerate(rp) {
+                if idx < newValue.count  {
+                    if newValue[idx] != p {
+                        if idx < Notifications.rotorPositonChanged.count {
+                            NSNotificationCenter.defaultCenter().postNotificationName(Notifications.rotorPositonChanged[idx], object: nil, userInfo: [Notifications.rotorPositonOldValue: p])
+                        }
+                    }
+                }
+            }
+
         }
     }
     
@@ -71,16 +88,27 @@ struct EnigmaSettings {
     
     static var plugboard: [PlugboardPair] {
         get {
-            return (userDefault.objectForKey(Keys.plugboard) as? [Box<PlugboardPair>])?.map { $0.content } ?? []
+            return (userDefault.objectForKey(Keys.plugboard) as? [String])?.map { PlugboardPair($0[$0.startIndex], $0[advance($0.startIndex, 1)]) } ?? []
         }
         set {
-            userDefault.setObject(newValue.map { Box($0) }, forKey: Keys.plugboard)
-            
+            userDefault.setObject(newValue.map { "\($0.letter1)\($0.letter2)" }, forKey: Keys.plugboard)
+            NSNotificationCenter.defaultCenter().postNotificationName(Notifications.plugboardChanged, object: nil)
         }
     }
     
 }
-
+class PairBox {
+    private let letter1: String
+    private let letter2: String
+    init(_ plg: PlugboardPair) {
+        letter1 = String(plg.letter1)
+        letter2 = String(plg.letter2)
+    }
+    
+    var plgPair: PlugboardPair {
+        return PlugboardPair(letter1[letter1.startIndex], letter2[letter2.startIndex])
+    }
+}
 class Box<T> {
     let content: T
     init(_ t: T) {

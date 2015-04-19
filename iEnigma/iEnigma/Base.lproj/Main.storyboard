@@ -36,41 +36,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-fg-4bs" customClass="EnigmaKeywordView" customModule="iEnigma" customModuleProvider="target">
-                                <rect key="frame" x="16" y="316" width="568" height="227"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="qbk-fg-4bs" secondAttribute="height" multiplier="10:4" id="SLQ-QA-cxX"/>
-                                    <constraint firstAttribute="height" constant="150" id="ad5-oM-d7y"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ad5-oM-d7y"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txb-jx-vFP">
-                                <rect key="frame" x="16" y="252" width="56" height="56"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="U0S-1o-3Ho"/>
-                                    <constraint firstAttribute="width" secondItem="Txb-jx-vFP" secondAttribute="height" id="ibe-R6-ozP"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="U0S-1o-3Ho"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-5Z-nNP">
-                                <rect key="frame" x="528" y="252" width="56" height="56"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="xA4-5Z-nNP" secondAttribute="height" id="al3-EQ-xoh"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="AB CD EF GH" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-u6-NwT">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="AB CD EF GH" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-u6-NwT">
                                 <rect key="frame" x="16" y="28" width="108" height="100"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="JFL-31-EOK"/>
                                     <constraint firstAttribute="height" constant="50" id="OQi-dA-ga0"/>
@@ -84,131 +52,302 @@
                                         <exclude reference="OQi-dA-ga0"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sW5-O9-tXS" appends="YES" id="TCp-GN-PEk"/>
+                                </connections>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-LC-zQa" userLabel="Rotor II">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-LC-zQa" userLabel="Rotor II" customClass="EnigmaRotorView" customModule="iEnigma" customModuleProvider="target">
                                 <rect key="frame" x="275" y="53" width="50" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VR2-LC-zQa" secondAttribute="height" id="Nkt-h2-Y6H"/>
                                     <constraint firstAttribute="height" constant="50" id="eoL-me-B5G"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="crogs">
+                                        <integer key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="eoL-me-B5G"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLZ-wX-ila" userLabel="Rotor III">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLZ-wX-ila" userLabel="Rotor III" customClass="EnigmaRotorView" customModule="iEnigma" customModuleProvider="target">
                                 <rect key="frame" x="333" y="53" width="50" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ama-BK-ZKg"/>
                                     <constraint firstAttribute="width" secondItem="dLZ-wX-ila" secondAttribute="height" id="d0Q-jw-fwk"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="crogs">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="ama-BK-ZKg"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ5-o3-Bu4" userLabel="Reflector">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ5-o3-Bu4" userLabel="Reflector" customClass="EnigmaRotorView" customModule="iEnigma" customModuleProvider="target">
                                 <rect key="frame" x="534" y="53" width="50" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="TRE-ls-jYD"/>
                                     <constraint firstAttribute="width" secondItem="tZ5-o3-Bu4" secondAttribute="height" id="wso-Ls-35m"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="crogs">
+                                        <integer key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="TRE-ls-jYD"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="643-lr-Y5C">
-                                <rect key="frame" x="272" y="252" width="56" height="56"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="750" constant="100" id="cgb-p4-PGZ"/>
-                                    <constraint firstAttribute="width" secondItem="643-lr-Y5C" secondAttribute="height" id="qlp-lX-d8v"/>
-                                </constraints>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-gM-Fkv">
-                                <rect key="frame" x="16" y="136" width="568" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-2u-bwb" userLabel="Rotor I">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-2u-bwb" userLabel="Rotor I" customClass="EnigmaRotorView" customModule="iEnigma" customModuleProvider="target">
                                 <rect key="frame" x="217" y="53" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.23921568627450981" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BiC-hq-ZIc"/>
                                     <constraint firstAttribute="height" constant="50" id="Btb-fK-Y01"/>
                                     <constraint firstAttribute="width" secondItem="CCy-2u-bwb" secondAttribute="height" id="Ng9-ho-lGf"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="crogs">
+                                        <integer key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="BiC-hq-ZIc"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-Av-dAt">
-                                <rect key="frame" x="16" y="194" width="568" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Juf-Ne-MFN" userLabel="PlugboardSetting" customClass="EnimgaPlugboardSettingsView" customModule="iEnigma" customModuleProvider="target">
+                                <rect key="frame" x="16" y="128" width="568" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="JF5-FF-gaK"/>
+                                    <constraint firstAttribute="height" priority="250" id="D2M-oG-eau"/>
+                                    <constraint firstAttribute="height" constant="100" id="TwQ-7b-Jjh"/>
+                                    <constraint firstAttribute="height" constant="100" id="d93-NQ-ilw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="TwQ-7b-Jjh"/>
+                                        <exclude reference="d93-NQ-ilw"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnP-LK-SVA" userLabel="RotorSetting">
+                                <rect key="frame" x="16" y="128" width="568" height="0.0"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NkY-dM-iTs"/>
+                                    <constraint firstAttribute="height" id="pgE-gR-XfL"/>
+                                    <constraint firstAttribute="height" priority="250" constant="100" id="yTE-cN-dVj"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NkY-dM-iTs"/>
+                                        <exclude reference="yTE-cN-dVj"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee9-cA-I4j" userLabel="ReflectorSetting">
+                                <rect key="frame" x="16" y="128" width="568" height="0.0"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="WkK-Uw-aSy"/>
+                                    <constraint firstAttribute="height" priority="250" id="hJr-A2-9qX"/>
+                                    <constraint firstAttribute="height" priority="250" constant="100" id="pA5-6m-smq"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WkK-Uw-aSy"/>
+                                        <exclude reference="pA5-6m-smq"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upm-cx-rwA">
+                                <rect key="frame" x="0.0" y="136" width="600" height="415"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-fg-4bs" customClass="EnigmaKeyboardView" customModule="iEnigma" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="195" width="560" height="200"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="HUg-E7-afG"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="qbk-fg-4bs" secondAttribute="height" multiplier="10:4" priority="752" id="SLQ-QA-cxX"/>
+                                            <constraint firstAttribute="height" constant="150" id="ad5-oM-d7y"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="whV-5t-kCD"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="ad5-oM-d7y"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txb-jx-vFP" customClass="EnigmaRotorPositionView" customModule="iEnigma" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="116" width="71" height="71"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Txb-jx-vFP" secondAttribute="height" multiplier="1:1" id="Mcd-a3-CEt"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="U0S-1o-3Ho"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="crogs">
+                                                <integer key="value" value="23"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="U0S-1o-3Ho"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="643-lr-Y5C" customClass="EnigmaRotorPositionView" customModule="iEnigma" customModuleProvider="target">
+                                        <rect key="frame" x="265" y="116" width="71" height="71"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="643-lr-Y5C" secondAttribute="height" multiplier="1:1" id="6oj-vi-gGa"/>
+                                            <constraint firstAttribute="height" priority="750" constant="100" id="MNB-5z-9Qx">
+                                                <variation key="heightClass=compact" constant="70"/>
+                                            </constraint>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="cgb-p4-PGZ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="nr0-SX-4YU">
+                                                <variation key="heightClass=compact" constant="50"/>
+                                            </constraint>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="crogs">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="cgb-p4-PGZ"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-5Z-nNP" customClass="EnigmaRotorPositionView" customModule="iEnigma" customModuleProvider="target">
+                                        <rect key="frame" x="509" y="116" width="71" height="71"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="xA4-5Z-nNP" secondAttribute="height" multiplier="1:1" id="lLu-NJ-rf6"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="crogs">
+                                                <integer key="value" value="23"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-gM-Fkv">
+                                        <rect key="frame" x="20" y="0.0" width="560" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-Av-dAt">
+                                        <rect key="frame" x="20" y="58" width="560" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="JF5-FF-gaK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="xA4-5Z-nNP" firstAttribute="height" secondItem="643-lr-Y5C" secondAttribute="height" id="2uP-VQ-IS0"/>
+                                    <constraint firstItem="BD6-Av-dAt" firstAttribute="leading" secondItem="upm-cx-rwA" secondAttribute="leading" constant="20" symbolic="YES" id="3Wx-hp-aQC"/>
+                                    <constraint firstAttribute="bottom" secondItem="qbk-fg-4bs" secondAttribute="bottom" constant="20" symbolic="YES" id="5Dg-lF-Otq"/>
+                                    <constraint firstItem="qbk-fg-4bs" firstAttribute="top" secondItem="643-lr-Y5C" secondAttribute="bottom" constant="8" symbolic="YES" id="5wB-h9-FuH"/>
+                                    <constraint firstAttribute="trailing" secondItem="BD6-Av-dAt" secondAttribute="trailing" constant="20" symbolic="YES" id="6UP-wd-RbG"/>
+                                    <constraint firstItem="mzD-gM-Fkv" firstAttribute="top" secondItem="upm-cx-rwA" secondAttribute="top" id="6uy-OW-rEG"/>
+                                    <constraint firstItem="643-lr-Y5C" firstAttribute="top" secondItem="BD6-Av-dAt" secondAttribute="bottom" constant="8" symbolic="YES" id="Czh-8G-fux"/>
+                                    <constraint firstItem="Txb-jx-vFP" firstAttribute="centerY" secondItem="643-lr-Y5C" secondAttribute="centerY" id="JGY-Pw-hb1"/>
+                                    <constraint firstItem="xA4-5Z-nNP" firstAttribute="centerY" secondItem="643-lr-Y5C" secondAttribute="centerY" id="QdU-4s-90E"/>
+                                    <constraint firstAttribute="trailing" secondItem="xA4-5Z-nNP" secondAttribute="trailing" constant="20" symbolic="YES" id="TeR-jZ-Vjx"/>
+                                    <constraint firstItem="Txb-jx-vFP" firstAttribute="leading" secondItem="upm-cx-rwA" secondAttribute="leading" constant="13" id="Uni-6d-zxi"/>
+                                    <constraint firstAttribute="trailing" secondItem="mzD-gM-Fkv" secondAttribute="trailing" constant="20" symbolic="YES" id="Xqo-Uf-2tT"/>
+                                    <constraint firstItem="qbk-fg-4bs" firstAttribute="leading" secondItem="upm-cx-rwA" secondAttribute="leading" constant="20" symbolic="YES" id="Yz1-cO-Zyt"/>
+                                    <constraint firstItem="Txb-jx-vFP" firstAttribute="height" secondItem="643-lr-Y5C" secondAttribute="height" id="e8u-mp-bdf"/>
+                                    <constraint firstItem="mzD-gM-Fkv" firstAttribute="leading" secondItem="upm-cx-rwA" secondAttribute="leading" constant="20" symbolic="YES" id="ggv-4g-6fz"/>
+                                    <constraint firstItem="BD6-Av-dAt" firstAttribute="top" secondItem="mzD-gM-Fkv" secondAttribute="bottom" constant="8" symbolic="YES" id="nhD-Gy-oUc"/>
+                                    <constraint firstAttribute="centerX" secondItem="643-lr-Y5C" secondAttribute="centerX" id="pcw-wy-NkQ"/>
+                                    <constraint firstItem="mzD-gM-Fkv" firstAttribute="height" secondItem="BD6-Av-dAt" secondAttribute="height" id="qsb-vU-Abh"/>
+                                    <constraint firstAttribute="trailing" secondItem="qbk-fg-4bs" secondAttribute="trailing" constant="20" symbolic="YES" id="wq3-6l-oKo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.28235294117647058" green="0.27843137254901962" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6fA-u6-NwT" firstAttribute="top" secondItem="hIp-c1-pdW" secondAttribute="bottom" constant="8" symbolic="YES" id="0Ze-X0-3nr"/>
-                            <constraint firstItem="643-lr-Y5C" firstAttribute="height" secondItem="Txb-jx-vFP" secondAttribute="height" id="1Ot-is-tLL"/>
+                            <constraint firstAttribute="trailing" secondItem="upm-cx-rwA" secondAttribute="trailing" id="0su-gN-Gib"/>
+                            <constraint firstItem="upm-cx-rwA" firstAttribute="top" secondItem="Juf-Ne-MFN" secondAttribute="bottom" constant="8" symbolic="YES" id="1lT-RG-61k"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dLZ-wX-ila" secondAttribute="trailing" constant="8" symbolic="YES" id="2Af-qx-tNa"/>
                             <constraint firstItem="dLZ-wX-ila" firstAttribute="width" secondItem="dLZ-wX-ila" secondAttribute="height" id="2KH-il-BHg"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="centerY" secondItem="6fA-u6-NwT" secondAttribute="centerY" id="3tQ-Tw-epy"/>
-                            <constraint firstItem="xA4-5Z-nNP" firstAttribute="top" secondItem="BD6-Av-dAt" secondAttribute="bottom" constant="8" symbolic="YES" id="3wb-rc-zM2"/>
+                            <constraint firstItem="upm-cx-rwA" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leading" id="4Q2-fz-4sd"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="height" secondItem="CCy-2u-bwb" secondAttribute="height" id="5bl-7N-gWm"/>
-                            <constraint firstItem="mzD-gM-Fkv" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="5lR-5h-fm4"/>
-                            <constraint firstItem="BD6-Av-dAt" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="5n4-p4-XAb"/>
+                            <constraint firstItem="ee9-cA-I4j" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="5ts-mI-lmQ"/>
                             <constraint firstItem="dLZ-wX-ila" firstAttribute="top" secondItem="hIp-c1-pdW" secondAttribute="bottom" constant="8" symbolic="YES" id="65W-hM-Q7X"/>
-                            <constraint firstItem="Txb-jx-vFP" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="738-un-ISy"/>
-                            <constraint firstItem="mzD-gM-Fkv" firstAttribute="height" secondItem="BD6-Av-dAt" secondAttribute="height" id="8Qr-Hw-87c"/>
+                            <constraint firstItem="upm-cx-rwA" firstAttribute="top" secondItem="ee9-cA-I4j" secondAttribute="bottom" constant="8" id="7qX-aY-VBC"/>
+                            <constraint firstItem="rWP-hP-Azo" firstAttribute="top" secondItem="upm-cx-rwA" secondAttribute="bottom" id="9Ru-9s-h4y"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="width" secondItem="tZ5-o3-Bu4" secondAttribute="height" id="B56-uK-K46"/>
-                            <constraint firstItem="mzD-gM-Fkv" firstAttribute="top" secondItem="VR2-LC-zQa" secondAttribute="bottom" constant="8" symbolic="YES" id="BMw-rb-HcE"/>
                             <constraint firstItem="6fA-u6-NwT" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="Ber-Tm-aQV"/>
-                            <constraint firstItem="mzD-gM-Fkv" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="EHe-ws-6t6"/>
-                            <constraint firstItem="qbk-fg-4bs" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="EOC-IX-e2P"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" constant="139" id="Eq9-If-iwc"/>
-                            <constraint firstItem="643-lr-Y5C" firstAttribute="height" secondItem="xA4-5Z-nNP" secondAttribute="height" id="Ezc-Z6-1YZ"/>
-                            <constraint firstItem="qbk-fg-4bs" firstAttribute="top" secondItem="xA4-5Z-nNP" secondAttribute="bottom" constant="8" symbolic="YES" id="G0a-RA-mW4"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="centerY" secondItem="VR2-LC-zQa" secondAttribute="centerY" id="G4p-kH-FMw"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="height" secondItem="6fA-u6-NwT" secondAttribute="height" id="GWK-dh-pxw"/>
                             <constraint firstItem="6fA-u6-NwT" firstAttribute="width" secondItem="dLZ-wX-ila" secondAttribute="width" id="Gyk-3a-htk"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="top" secondItem="hIp-c1-pdW" secondAttribute="bottom" constant="8" symbolic="YES" id="Hj4-3V-NdF"/>
-                            <constraint firstItem="Txb-jx-vFP" firstAttribute="top" secondItem="BD6-Av-dAt" secondAttribute="bottom" constant="8" symbolic="YES" id="JG2-uY-50F"/>
                             <constraint firstItem="VR2-LC-zQa" firstAttribute="width" secondItem="VR2-LC-zQa" secondAttribute="height" id="KPV-Vf-iqT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qbk-fg-4bs" secondAttribute="trailing" id="LB2-yX-cTZ"/>
+                            <constraint firstItem="rnP-LK-SVA" firstAttribute="bottom" secondItem="ee9-cA-I4j" secondAttribute="bottom" id="LtW-rJ-kiP"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="height" secondItem="VR2-LC-zQa" secondAttribute="height" id="NSY-kC-kq0"/>
-                            <constraint firstItem="mzD-gM-Fkv" firstAttribute="top" secondItem="6fA-u6-NwT" secondAttribute="bottom" constant="8" symbolic="YES" id="O7T-bs-pCP"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="top" secondItem="hIp-c1-pdW" secondAttribute="bottom" constant="8" symbolic="YES" id="Q14-y4-XWG"/>
-                            <constraint firstAttribute="centerX" secondItem="643-lr-Y5C" secondAttribute="centerX" id="Qc7-xC-AMc"/>
-                            <constraint firstItem="BD6-Av-dAt" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="SSW-XD-rRN"/>
+                            <constraint firstItem="Juf-Ne-MFN" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="S0D-5P-905"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="SUT-F6-7tL"/>
                             <constraint firstItem="dLZ-wX-ila" firstAttribute="leading" secondItem="VR2-LC-zQa" secondAttribute="trailing" constant="8" symbolic="YES" id="Snb-nL-UPa"/>
+                            <constraint firstItem="rnP-LK-SVA" firstAttribute="top" secondItem="ee9-cA-I4j" secondAttribute="bottom" id="Tco-tz-nvI"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="height" secondItem="VR2-LC-zQa" secondAttribute="height" id="VXU-Z9-V0n"/>
                             <constraint firstItem="6fA-u6-NwT" firstAttribute="height" secondItem="dLZ-wX-ila" secondAttribute="height" id="WEZ-5u-JZX"/>
+                            <constraint firstItem="Juf-Ne-MFN" firstAttribute="top" secondItem="6fA-u6-NwT" secondAttribute="bottom" id="YfE-Yn-39G"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="height" secondItem="dLZ-wX-ila" secondAttribute="height" id="Z7I-Uo-clf"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="centerY" secondItem="dLZ-wX-ila" secondAttribute="centerY" id="ZFe-9X-rUt"/>
-                            <constraint firstItem="qbk-fg-4bs" firstAttribute="top" secondItem="643-lr-Y5C" secondAttribute="bottom" constant="8" symbolic="YES" id="aZq-mB-AFJ"/>
+                            <constraint firstItem="rnP-LK-SVA" firstAttribute="top" secondItem="Juf-Ne-MFN" secondAttribute="top" id="a2J-LT-yc7"/>
+                            <constraint firstItem="rnP-LK-SVA" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="arU-HO-IVa"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="height" secondItem="VR2-LC-zQa" secondAttribute="height" id="be8-G1-SFt"/>
-                            <constraint firstItem="xA4-5Z-nNP" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="fAz-Ft-Xq9"/>
-                            <constraint firstItem="qbk-fg-4bs" firstAttribute="top" secondItem="xA4-5Z-nNP" secondAttribute="bottom" constant="8" symbolic="YES" id="gTk-47-bSP"/>
-                            <constraint firstItem="BD6-Av-dAt" firstAttribute="top" secondItem="mzD-gM-Fkv" secondAttribute="bottom" constant="8" symbolic="YES" id="iMK-l4-lpE"/>
-                            <constraint firstItem="rWP-hP-Azo" firstAttribute="top" secondItem="qbk-fg-4bs" secondAttribute="bottom" constant="8" symbolic="YES" id="iTd-am-i4k"/>
-                            <constraint firstItem="643-lr-Y5C" firstAttribute="top" secondItem="BD6-Av-dAt" secondAttribute="bottom" constant="8" symbolic="YES" id="lIB-eC-zhb"/>
+                            <constraint firstItem="rnP-LK-SVA" firstAttribute="top" secondItem="ee9-cA-I4j" secondAttribute="top" id="cPn-eU-Px0"/>
+                            <constraint firstItem="ee9-cA-I4j" firstAttribute="top" secondItem="f5Q-mV-3Tq" secondAttribute="topMargin" id="hav-Zc-zSE"/>
+                            <constraint firstItem="Juf-Ne-MFN" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="jAY-Zm-Ngd"/>
+                            <constraint firstItem="Juf-Ne-MFN" firstAttribute="top" secondItem="ee9-cA-I4j" secondAttribute="bottom" constant="8" symbolic="YES" id="lGo-A5-PuF"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="centerY" secondItem="dLZ-wX-ila" secondAttribute="centerY" id="m5q-6s-yoW"/>
                             <constraint firstItem="dLZ-wX-ila" firstAttribute="width" secondItem="dLZ-wX-ila" secondAttribute="height" id="nJ5-Zy-qdL"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="width" secondItem="tZ5-o3-Bu4" secondAttribute="height" id="nky-0c-4mV"/>
@@ -216,30 +355,36 @@
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="height" secondItem="6fA-u6-NwT" secondAttribute="height" id="pN2-ck-Po1"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6fA-u6-NwT" secondAttribute="trailing" constant="8" symbolic="YES" id="r6b-Bb-AR5"/>
                             <constraint firstItem="6fA-u6-NwT" firstAttribute="height" secondItem="VR2-LC-zQa" secondAttribute="height" id="rQV-Aq-CZY"/>
-                            <constraint firstItem="mzD-gM-Fkv" firstAttribute="top" secondItem="tZ5-o3-Bu4" secondAttribute="bottom" constant="8" symbolic="YES" id="s2n-vS-agw"/>
+                            <constraint firstItem="rnP-LK-SVA" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="rSm-1L-oFP"/>
+                            <constraint firstItem="ee9-cA-I4j" firstAttribute="top" secondItem="6fA-u6-NwT" secondAttribute="bottom" id="sCM-tY-qjB"/>
                             <constraint firstAttribute="centerX" secondItem="VR2-LC-zQa" secondAttribute="centerX" id="sHE-rR-uCB"/>
-                            <constraint firstItem="xA4-5Z-nNP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="643-lr-Y5C" secondAttribute="trailing" constant="8" symbolic="YES" id="t0k-LW-mfN"/>
+                            <constraint firstItem="ee9-cA-I4j" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="sNy-Cq-HAl"/>
                             <constraint firstItem="dLZ-wX-ila" firstAttribute="height" secondItem="VR2-LC-zQa" secondAttribute="height" id="ug5-aO-eTD"/>
-                            <constraint firstItem="643-lr-Y5C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Txb-jx-vFP" secondAttribute="trailing" constant="8" symbolic="YES" id="wWP-sx-Hs0"/>
+                            <constraint firstItem="Juf-Ne-MFN" firstAttribute="leading" secondItem="f5Q-mV-3Tq" secondAttribute="leadingMargin" id="vgy-H1-NmY"/>
                             <constraint firstItem="VR2-LC-zQa" firstAttribute="leading" secondItem="CCy-2u-bwb" secondAttribute="trailing" constant="8" symbolic="YES" id="waE-0C-L9w"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="height" secondItem="dLZ-wX-ila" secondAttribute="height" id="wcT-yU-Yxo"/>
                             <constraint firstItem="tZ5-o3-Bu4" firstAttribute="width" secondItem="tZ5-o3-Bu4" secondAttribute="height" id="xZV-5r-G5c"/>
-                            <constraint firstItem="qbk-fg-4bs" firstAttribute="top" secondItem="Txb-jx-vFP" secondAttribute="bottom" constant="8" symbolic="YES" id="zaQ-0P-KKs"/>
+                            <constraint firstItem="Juf-Ne-MFN" firstAttribute="top" secondItem="rnP-LK-SVA" secondAttribute="bottom" id="y5U-PM-vAf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Gyk-3a-htk"/>
                                 <exclude reference="WEZ-5u-JZX"/>
                                 <exclude reference="rQV-Aq-CZY"/>
-                                <exclude reference="BMw-rb-HcE"/>
-                                <exclude reference="s2n-vS-agw"/>
+                                <exclude reference="hav-Zc-zSE"/>
+                                <exclude reference="Tco-tz-nvI"/>
+                                <exclude reference="cPn-eU-Px0"/>
+                                <exclude reference="YfE-Yn-39G"/>
+                                <exclude reference="jAY-Zm-Ngd"/>
+                                <exclude reference="lGo-A5-PuF"/>
+                                <exclude reference="y5U-PM-vAf"/>
+                                <exclude reference="7qX-aY-VBC"/>
                                 <exclude reference="Eq9-If-iwc"/>
                                 <exclude reference="GWK-dh-pxw"/>
                                 <exclude reference="Q14-y4-XWG"/>
                                 <exclude reference="be8-G1-SFt"/>
                                 <exclude reference="KPV-Vf-iqT"/>
                                 <exclude reference="oP0-fq-Lrh"/>
-                                <exclude reference="gTk-47-bSP"/>
                                 <exclude reference="2KH-il-BHg"/>
                                 <exclude reference="65W-hM-Q7X"/>
                                 <exclude reference="nJ5-Zy-qdL"/>
@@ -256,14 +401,29 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Enigma" id="e1e-Hh-WXA"/>
                     <connections>
+                        <outlet property="bottomConstaint" destination="9Ru-9s-h4y" id="wUn-XD-gxh"/>
                         <outlet property="encodeTextView" destination="mzD-gM-Fkv" id="QJW-3a-EIP"/>
                         <outlet property="inputTextView" destination="BD6-Av-dAt" id="Emy-Q3-qGC"/>
                         <outlet property="keyboard" destination="qbk-fg-4bs" id="QSR-0d-lDR"/>
+                        <outlet property="plugboardHeightConstraint" destination="D2M-oG-eau" id="yOK-Nd-WgN"/>
+                        <outlet property="plugboardLabel" destination="6fA-u6-NwT" id="Cfx-20-HTt"/>
+                        <outlet property="plugboardLeading" destination="vgy-H1-NmY" id="r3h-nc-fmq"/>
+                        <outlet property="plugboardTrailing" destination="S0D-5P-905" id="3HN-Yv-uqq"/>
+                        <outlet property="plugboardView" destination="Juf-Ne-MFN" id="5dE-MN-Q4b"/>
+                        <outlet property="rotorPositonViewI" destination="Txb-jx-vFP" id="LlY-dr-CUM"/>
+                        <outlet property="rotorPositonViewII" destination="643-lr-Y5C" id="7Dk-mF-2An"/>
+                        <outlet property="rotorPositonViewIII" destination="xA4-5Z-nNP" id="tod-Uw-aMW"/>
+                        <outlet property="topConstraint" destination="1lT-RG-61k" id="wyc-sQ-m7r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmS-86-uwy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sW5-O9-tXS">
+                    <connections>
+                        <action selector="plugboardTapped:" destination="nvg-dQ-5Cz" id="P8h-57-tfO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="360" y="-968"/>
+            <point key="canvasLocation" x="360" y="-971"/>
         </scene>
     </scenes>
 </document>

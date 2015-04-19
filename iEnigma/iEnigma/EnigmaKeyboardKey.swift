@@ -8,36 +8,22 @@
 
 import UIKit
 
-class EnigmaKeyboardKey: UIButton {
+class EnigmaKeyboardKey: EnigmaButton {
     private struct Design {
-        static let borderWidth: CGFloat = 2
-        static let fontScale: CGFloat = 0.6
+        static let BorderWidth: CGFloat = 2
+        static let FontScale: CGFloat = 0.6
+        static let HorizontalSpace: CGFloat = 8
+        static let VerticalSpace: CGFloat = 12
     }
+
+    
     let key: Character
-    private var tapped = false {
-        didSet {
-            if tapped != oldValue {
-                self.setNeedsDisplay()
-            }
-        }
-    }
+    
     init(key letter: Character) {
         key = letter
         super.init(frame: CGRectZero)
         
         self.contentMode = UIViewContentMode.Redraw
-        
-        //Tap
-        self.addTarget(self, action: "beginTouch", forControlEvents: .TouchDown)
-        self.addTarget(self, action: "beginTouch", forControlEvents: .TouchDragEnter)
-        self.addTarget(self, action: "beginTouch", forControlEvents: .TouchDragInside)
-
-        //End
-        self.addTarget(self, action: "endTouch", forControlEvents: .TouchDragOutside)
-        self.addTarget(self, action: "endTouch", forControlEvents: .TouchDragExit)
-        self.addTarget(self, action: "endTouch", forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: "endTouch", forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: "endTouch", forControlEvents: .TouchCancel)
     }
 
     
@@ -55,19 +41,18 @@ class EnigmaKeyboardKey: UIButton {
     
     override func drawRect(rectToDraw: CGRect) {
         let rect = bounds
-        let circlePath = UIBezierPath(ovalInRect: CGRect(x: Design.borderWidth, y: Design.borderWidth, width: rect.width - Design.borderWidth*2, height: rect.width - Design.borderWidth*2))
-        circlePath.lineWidth = Design.borderWidth
+        let ratio = min(rect.height - (tapped ? 0 : Design.VerticalSpace), rect.width - (tapped ? 0 : Design.HorizontalSpace)) - Design.BorderWidth
+        
+        let circlePath = UIBezierPath(ovalInRect: CGRectFromSize(CGSize(width: ratio, height: ratio), centedInRect: rect))
+        circlePath.lineWidth = Design.BorderWidth
         Constants.Design.Colors.Text.setStroke()
         (tapped ? Constants.Design.Colors.Foreground : Constants.Design.Colors.DarkForeground).setFill()
         circlePath.stroke()
         circlePath.fill()
-        let font = Constants.Design.BodyFont.fontWithSize(rect.height * Design.fontScale)
+        let font = Constants.Design.BodyFont.fontWithSize(ratio * Design.FontScale)
         let attributeCharacter = NSAttributedString(string: String(key), attributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: tapped ? Constants.Design.Colors.DarkForeground : Constants.Design.Colors.Text])
         attributeCharacter.drawInRect(CGRectFromSize(attributeCharacter.size(), centedInRect: rect))
     }
-    
-    func beginTouch() { tapped = true }
-    
-    func endTouch() { tapped = false }
+  
     
 }
