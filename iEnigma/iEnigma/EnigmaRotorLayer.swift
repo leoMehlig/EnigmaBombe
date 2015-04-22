@@ -9,20 +9,45 @@
 import UIKit
 
 @IBDesignable
-class EnigmaRotorView: UIView {
+class EnigmaRotorLayer: CALayer {
     
     
     
     
-    @IBInspectable var crogs: Int = 35
-    @IBInspectable var borderWidth: CGFloat = 3
-    @IBInspectable var margin: CGFloat = 8
+    var crogs: Int = 23 {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
     
-    override func drawRect(rect: CGRect) {
-        self.contentMode = UIViewContentMode.Redraw
+    var lineWidth: CGFloat = 3 {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    var margin: CGFloat = 3 {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    var strokeColor: UIColor = Constants.Design.Colors.Text {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    var fillColor: UIColor = Constants.Design.Colors.Foreground {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
 
+    override func drawInContext(ctx: CGContext!) {
         let points = gearWheelPointsForRect(bounds)
         if !points.inner.isEmpty && !points.outter.isEmpty {
+            UIGraphicsPushContext(ctx)
             let path = UIBezierPath()
             path.moveToPoint(points.inner.first!)
             var isOutter = false
@@ -41,14 +66,18 @@ class EnigmaRotorView: UIView {
             }
             path.closePath()
             
-            path.lineWidth = borderWidth
-            Constants.Design.Colors.Text.setStroke()
-            Constants.Design.Colors.Foreground.setFill()
+            path.lineWidth = lineWidth
+            strokeColor.setStroke()
+            fillColor.setFill()
+            
             path.stroke()
             path.fill()
+            UIGraphicsPopContext()
         }
+        super.drawInContext(ctx)
         
     }
+   
     
     
     

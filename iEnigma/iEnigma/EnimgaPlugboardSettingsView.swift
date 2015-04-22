@@ -80,7 +80,7 @@ class EnimgaPlugboardSettingsView: UIView {
         shapeLayer.frame = bounds
         shapeLayer.strokeColor = Constants.Design.Colors.Foreground.CGColor
         shapeLayer.fillColor = UIColor.clearColor().CGColor
-        shapeLayer.lineWidth = 2
+        shapeLayer.lineWidth = bounds.height / 50
         layer.addSublayer(shapeLayer)
         shapeLayer.zPosition = 100
         shapeLayer.path = path.CGPath
@@ -116,8 +116,7 @@ class EnimgaPlugboardSettingsView: UIView {
                     newPairs.append(PlugboardPair(char, lastButton.letter!))
                     selectedButton = nil
                 } else {
-                    selectedButton = button
-                    button.waiting = true
+                    button.waiting = false
                     button.selected = false
                 }
                 EnigmaSettings.plugboard = newPairs

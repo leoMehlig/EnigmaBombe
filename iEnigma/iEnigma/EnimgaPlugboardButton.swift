@@ -35,7 +35,7 @@ class EnimgaPlugboardButton: EnigmaButton {
         if let char = letter {
             let circleRatio = bounds.width < 10 ? 10 : bounds.width
             
-            let borderWidth = bounds.width / 10
+            let borderWidth = bounds.width / 5
             let circlePath = UIBezierPath(ovalInRect: CGRect(x: borderWidth/2, y: bounds.height - (circleRatio + borderWidth/2), width: circleRatio - borderWidth, height: circleRatio - borderWidth))
             circlePath.lineWidth = borderWidth
             if waiting || tapped {

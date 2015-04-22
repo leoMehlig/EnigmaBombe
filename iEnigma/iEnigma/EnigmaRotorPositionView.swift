@@ -7,141 +7,145 @@
 //
 
 import UIKit
-import QuartzCore
-class EnigmaRotorPositionView: EnigmaRotorView {
+
+@IBDesignable
+class EnigmaRotorPositionView: UIView {
+    //MARK: - Public
+    typealias RotorPositionCallBack = (EnigmaRotorPositionView, Int) -> Void
+    var rotorChanged: RotorPositionCallBack?
+    
+    var rotorPosition: Int = 0 {
+        didSet {
+            while rotorPosition >= alphabet.count { rotorPosition -= alphabet.count }
+            while rotorPosition < 0  { rotorPosition += alphabet.count }
+            if rotorPosition != oldValue {
+                if oldValue > rotorPosition && oldValue < rotorPosition + 3 {
+                    self.animateBackwards()
+                } else if rotorPosition >= alphabet.count - 2 && oldValue < 2  {
+                    self.animateBackwards()
+                } else  {
+                    self.animateForward()
+                }
+            }
+        }
+    }
     
     
-    
-    lazy var upButton: EnigmaRotorPositionButton = {
+    private lazy var upButton: EnigmaRotorPositionButton = {
         let b = EnigmaRotorPositionButton()
         b.up = true
         b.addTarget(self, action: "nextPositon", forControlEvents: .TouchUpInside)
         b.contentMode = .Redraw
         return b
         }()
-    lazy var downButton: EnigmaRotorPositionButton = {
+    
+    private lazy var downButton: EnigmaRotorPositionButton = {
         let b = EnigmaRotorPositionButton()
         b.up = false
         b.addTarget(self, action: "previousPositon", forControlEvents: .TouchUpInside)
         return b
         }()
+    
     private class func createLabel() -> UILabel {
         let l = UILabel()
         return l
     }
+    
     private func attributedStrFromString(string: String) -> NSAttributedString {
         let font = Constants.Design.BodyFont.fontWithSize(bounds.height * 0.4)
         return NSAttributedString(string: string, attributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: Constants.Design.Colors.Text])
     }
-    lazy var letterLabel: UILabel = EnigmaRotorPositionView.createLabel()
-    lazy var reuseLabel: UILabel = EnigmaRotorPositionView.createLabel()
-    var observer: NSObjectProtocol?
-    var currentPositon: Int = 0
-    var rotorNumber: Int? {
-        didSet {
-            addPositionObserver()
-        }
-    }
     
-    var rotorChanged: (EnigmaRotorPositionView -> Void)?
+    private lazy var letterLabel: UILabel = EnigmaRotorPositionView.createLabel()
+    private lazy var reuseLabel: UILabel = EnigmaRotorPositionView.createLabel()
+    
+    private var rotorLayer: EnigmaRotorLayer = {
+        let l = EnigmaRotorLayer()
+        return l
+        }()
     
     
-    private func addPositionObserver() {
-        if observer != nil { NSNotificationCenter.defaultCenter().removeObserver(observer!) }
-        if let number = rotorNumber {
-            if EnigmaSettings.Notifications.rotorPositonChanged.count > rotorNumber {
-                self.observer = NSNotificationCenter.defaultCenter().addObserverForName( EnigmaSettings.Notifications.rotorPositonChanged[number], object: nil, queue: NSOperationQueue.mainQueue()) { [unowned self ] _ in
-                    let newPosition = EnigmaSettings.rotorPositions[number]
-                    if newPosition != self.currentPositon {
-                        if self.currentPositon > newPosition && self.currentPositon < newPosition + 3 {
-                            self.animateBackwards(newPosition: newPosition)
-                        } else if newPosition >= alphabet.count - 2 && self.currentPositon < 2  {
-                            self.animateBackwards(newPosition: newPosition)
-                        } else  {
-                            self.animateForward(newPosition: newPosition)
-                        }
-                    }
-                }
-            }
-            currentPositon = EnigmaSettings.rotorPositions[number]
-            self.letterLabel.attributedText = attributedStrFromString(String(alphabet[currentPositon]))
-        }
-    }
+    
     var buttonSize: CGFloat = 0
     override func layoutSubviews() {
-        let buttonRatio = max(22, bounds.height / 5)
-        buttonSize = buttonRatio
-        upButton.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height / 2)
-        upButton.visbleRect = CGRect(x: bounds.midX - buttonRatio / 2, y: 0, width: buttonRatio, height: buttonRatio)
-        downButton.frame = CGRect(x: 0, y: bounds.midY, width: bounds.width, height: bounds.height / 2)
-        downButton.visbleRect = CGRect(x: bounds.midX - buttonRatio / 2, y: downButton.frame.height - buttonRatio, width: buttonRatio, height: buttonRatio)
-        addSubview(upButton)
-        addSubview(downButton)
-        letterLabel.frame.size = letterLabel.intrinsicContentSize()
-
-        letterLabel.center = CGPoint(x: bounds.midX, y: bounds.midY)
-        letterLabel.attributedText = attributedStrFromString(String(alphabet[currentPositon]))
-        insertSubview(letterLabel, atIndex: 0)
+        if !animating {
+            rotorLayer.frame = bounds
+            layer.addSublayer(rotorLayer)
+            let buttonRatio = bounds.height / 4
+            rotorLayer.margin = buttonRatio/2
+            buttonSize = buttonRatio
+            upButton.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height / 2)
+            upButton.visbleRect = CGRect(x: bounds.midX - buttonRatio / 2, y: 0, width: buttonRatio, height: buttonRatio)
+            downButton.frame = CGRect(x: 0, y: bounds.midY, width: bounds.width, height: bounds.height / 2)
+            downButton.visbleRect = CGRect(x: bounds.midX - buttonRatio / 2, y: downButton.frame.height - buttonRatio, width: buttonRatio, height: buttonRatio)
+            addSubview(upButton)
+            addSubview(downButton)
+            letterLabel.frame.size = letterLabel.intrinsicContentSize()
+            
+            letterLabel.center = CGPoint(x: bounds.midX, y: bounds.midY)
+            if letterLabel.attributedText == nil || letterLabel.attributedText?.string == nil {
+                letterLabel.attributedText = attributedStrFromString(String(alphabet[rotorPosition]))
+            } else {
+                letterLabel.attributedText = attributedStrFromString(letterLabel.text!)
+            }
+            insertSubview(letterLabel, belowSubview: upButton)
+        }
     }
-    
-    func animateForward(#newPosition: Int) {
-        currentPositon = newPosition
+    var animating = false
+    private func animateForward() {
         let l = reuseLabel
-        l.attributedText = attributedStrFromString(String(alphabet[currentPositon]))
+        l.attributedText = attributedStrFromString(String(alphabet[rotorPosition]))
         l.frame.size = l.intrinsicContentSize()
         l.frame.origin = CGPoint(x: bounds.midX - l.frame.width/2, y: bounds.height - buttonSize - l.frame.height / 2)
         l.alpha = 0.0
         
-       insertSubview(l, atIndex: 0)
-        UIView.animateWithDuration(0.3) {
+        insertSubview(l, belowSubview: downButton)
+        UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: nil, animations: { () -> Void in
+            self.animating = true
             self.letterLabel.frame.origin = CGPoint(x: self.letterLabel.frame.origin.x, y: self.buttonSize - self.letterLabel.frame.height / 2)
             self.letterLabel.alpha = 0.0
             l.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
             l.alpha = 1.0
             self.reuseLabel = self.letterLabel
             self.letterLabel = l
+            }) { fi in
+                if fi {
+                    self.animating = false
+                }
         }
-
     }
-    func animateBackwards(#newPosition: Int) {
-        currentPositon = newPosition
+    private func animateBackwards() {
         let l = reuseLabel
-        l.attributedText = attributedStrFromString(String(alphabet[currentPositon]))
+        l.attributedText = attributedStrFromString(String(alphabet[rotorPosition]))
         l.frame.size = l.intrinsicContentSize()
         l.frame.origin = CGPoint(x: bounds.midX - l.frame.width/2, y: buttonSize - l.frame.height / 2)
         l.alpha = 0.0
-        insertSubview(l, atIndex: 0)
-        UIView.animateWithDuration(0.3) {
+        insertSubview(l, belowSubview: upButton)
+        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: nil, animations: { () -> Void in
+            self.animating = true
             self.letterLabel.frame.origin = CGPoint(x: self.letterLabel.frame.origin.x, y: self.bounds.height - self.buttonSize - self.letterLabel.frame.height / 2)
             self.letterLabel.alpha = 0.0
             l.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
             l.alpha = 1.0
             self.reuseLabel = self.letterLabel
             self.letterLabel = l
+            }) { fi in
+                if fi {
+                    self.animating = false
+                }
         }
+       
     }
+    
     func nextPositon() {
-        var newPosition = currentPositon + 1
-        if newPosition >= alphabet.count {
-            newPosition = 0
-        }
-        animateForward(newPosition: newPosition)
-        rotorChanged?(self)
+        rotorPosition++
+        rotorChanged?(self, 1)
     }
     
     func previousPositon() {
-        var newPosition = currentPositon - 1
-        if newPosition < 0 {
-            newPosition = alphabet.count - 1
-        }
-        animateBackwards(newPosition: newPosition)
-        rotorChanged?(self)
+        rotorPosition--
+        rotorChanged?(self, -1)
     }
     
-    deinit {
-        if observer != nil {
-            NSNotificationCenter.defaultCenter().removeObserver(observer!)
-        }
-        println(self)
-    }
+    
 }

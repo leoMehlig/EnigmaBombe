@@ -12,10 +12,10 @@
 		7F1941FA1ADD694500647CC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1941F91ADD694500647CC9 /* Images.xcassets */; };
 		7F1941FD1ADD694500647CC9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F1941FB1ADD694500647CC9 /* LaunchScreen.xib */; };
 		7F1942091ADD694500647CC9 /* iEnigmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1942081ADD694500647CC9 /* iEnigmaTests.swift */; };
-		7FA34E121AE29108009B36D1 /* EnigmaRotorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34E111AE29108009B36D1 /* EnigmaRotorView.swift */; };
+		7F3290CC1AE83D7A00215398 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3290CB1AE83D7A00215398 /* TabBarViewController.swift */; };
+		7FA34E121AE29108009B36D1 /* EnigmaRotorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34E111AE29108009B36D1 /* EnigmaRotorLayer.swift */; };
 		7FA34E141AE29906009B36D1 /* EnigmaRotorPositionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34E131AE29906009B36D1 /* EnigmaRotorPositionButton.swift */; };
 		7FA34E161AE299F9009B36D1 /* EnigmaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34E151AE299F9009B36D1 /* EnigmaButton.swift */; };
-		7FA34E191AE2B616009B36D1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA34E181AE2B616009B36D1 /* QuartzCore.framework */; };
 		7FA34E1B1AE3C9A6009B36D1 /* EnimgaPlugboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34E1A1AE3C9A6009B36D1 /* EnimgaPlugboardSettingsView.swift */; };
 		7FA34E1D1AE3C9D8009B36D1 /* EnimgaPlugboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34E1C1AE3C9D8009B36D1 /* EnimgaPlugboardButton.swift */; };
 		7FCAFAF31ADEDF0D00554D64 /* EnigmaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCAFAF21ADEDF0D00554D64 /* EnigmaConstants.swift */; };
@@ -36,6 +36,11 @@
 		7FCAFB0E1ADF0D8500554D64 /* Bombe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCAFB001ADF0CFC00554D64 /* Bombe.swift */; };
 		7FCAFB0F1ADF0D8500554D64 /* RotorBombe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCAFB011ADF0CFC00554D64 /* RotorBombe.swift */; };
 		7FCAFB101ADF0D8500554D64 /* PlugboardBombe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCAFB021ADF0CFC00554D64 /* PlugboardBombe.swift */; };
+		7FDF5F671AE5980E00819A3D /* EnigmaSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDF5F661AE5980E00819A3D /* EnigmaSettingBaseView.swift */; };
+		7FDF5F691AE598E300819A3D /* EnigmaReflectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDF5F681AE598E300819A3D /* EnigmaReflectorButton.swift */; };
+		7FDF5F6B1AE59B2B00819A3D /* EnigmaReflectorSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDF5F6A1AE59B2B00819A3D /* EnigmaReflectorSettingView.swift */; };
+		7FDF5F6D1AE6A2B800819A3D /* EnigmaRotorSettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDF5F6C1AE6A2B800819A3D /* EnigmaRotorSettingButton.swift */; };
+		7FDF5F6F1AE6D2D000819A3D /* EnigmaRotorSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDF5F6E1AE6D2D000819A3D /* EnigmaRotorSettingView.swift */; };
 		7FE9FEB71AE04FC300422A23 /* EnigmaRotorPositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FEB61AE04FC300422A23 /* EnigmaRotorPositionView.swift */; };
 		7FF3BC961ADFD97A0097D09A /* EnigmaSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BC951ADFD97A0097D09A /* EnigmaSettings.swift */; };
 /* End PBXBuildFile section */
@@ -60,10 +65,10 @@
 		7F1942021ADD694500647CC9 /* iEnigmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iEnigmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1942071ADD694500647CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F1942081ADD694500647CC9 /* iEnigmaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iEnigmaTests.swift; sourceTree = "<group>"; };
-		7FA34E111AE29108009B36D1 /* EnigmaRotorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaRotorView.swift; sourceTree = "<group>"; };
+		7F3290CB1AE83D7A00215398 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		7FA34E111AE29108009B36D1 /* EnigmaRotorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaRotorLayer.swift; sourceTree = "<group>"; };
 		7FA34E131AE29906009B36D1 /* EnigmaRotorPositionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaRotorPositionButton.swift; sourceTree = "<group>"; };
 		7FA34E151AE299F9009B36D1 /* EnigmaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaButton.swift; sourceTree = "<group>"; };
-		7FA34E181AE2B616009B36D1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7FA34E1A1AE3C9A6009B36D1 /* EnimgaPlugboardSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnimgaPlugboardSettingsView.swift; sourceTree = "<group>"; };
 		7FA34E1C1AE3C9D8009B36D1 /* EnimgaPlugboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnimgaPlugboardButton.swift; sourceTree = "<group>"; };
 		7FCAFAF21ADEDF0D00554D64 /* EnigmaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaConstants.swift; sourceTree = "<group>"; };
@@ -77,6 +82,11 @@
 		7FCAFB001ADF0CFC00554D64 /* Bombe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bombe.swift; sourceTree = "<group>"; };
 		7FCAFB011ADF0CFC00554D64 /* RotorBombe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorBombe.swift; sourceTree = "<group>"; };
 		7FCAFB021ADF0CFC00554D64 /* PlugboardBombe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlugboardBombe.swift; sourceTree = "<group>"; };
+		7FDF5F661AE5980E00819A3D /* EnigmaSettingBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaSettingBaseView.swift; sourceTree = "<group>"; };
+		7FDF5F681AE598E300819A3D /* EnigmaReflectorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaReflectorButton.swift; sourceTree = "<group>"; };
+		7FDF5F6A1AE59B2B00819A3D /* EnigmaReflectorSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaReflectorSettingView.swift; sourceTree = "<group>"; };
+		7FDF5F6C1AE6A2B800819A3D /* EnigmaRotorSettingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaRotorSettingButton.swift; sourceTree = "<group>"; };
+		7FDF5F6E1AE6D2D000819A3D /* EnigmaRotorSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaRotorSettingView.swift; sourceTree = "<group>"; };
 		7FE9FEB61AE04FC300422A23 /* EnigmaRotorPositionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaRotorPositionView.swift; sourceTree = "<group>"; };
 		7FF3BC951ADFD97A0097D09A /* EnigmaSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +96,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FA34E191AE2B616009B36D1 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +115,6 @@
 				7F1941EF1ADD694500647CC9 /* iEnigma */,
 				7F1942051ADD694500647CC9 /* iEnigmaTests */,
 				7F1941EE1ADD694500647CC9 /* Products */,
-				7FA34E181AE2B616009B36D1 /* QuartzCore.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,11 +173,16 @@
 				7FCAFAF51ADEE41300554D64 /* EnigmaKeyboardView.swift */,
 				7FCAFAF71ADEE60800554D64 /* EnigmaKeyboardKey.swift */,
 				7FA34E151AE299F9009B36D1 /* EnigmaButton.swift */,
-				7FA34E111AE29108009B36D1 /* EnigmaRotorView.swift */,
+				7FA34E111AE29108009B36D1 /* EnigmaRotorLayer.swift */,
+				7FDF5F6C1AE6A2B800819A3D /* EnigmaRotorSettingButton.swift */,
+				7FDF5F6E1AE6D2D000819A3D /* EnigmaRotorSettingView.swift */,
 				7FE9FEB61AE04FC300422A23 /* EnigmaRotorPositionView.swift */,
 				7FA34E131AE29906009B36D1 /* EnigmaRotorPositionButton.swift */,
+				7FDF5F661AE5980E00819A3D /* EnigmaSettingBaseView.swift */,
 				7FA34E1A1AE3C9A6009B36D1 /* EnimgaPlugboardSettingsView.swift */,
 				7FA34E1C1AE3C9D8009B36D1 /* EnimgaPlugboardButton.swift */,
+				7FDF5F6A1AE59B2B00819A3D /* EnigmaReflectorSettingView.swift */,
+				7FDF5F681AE598E300819A3D /* EnigmaReflectorButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -178,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				7FCAFAFA1ADF003600554D64 /* EnigmaViewController.swift */,
+				7F3290CB1AE83D7A00215398 /* TabBarViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -326,21 +340,27 @@
 				7FA34E1B1AE3C9A6009B36D1 /* EnimgaPlugboardSettingsView.swift in Sources */,
 				7FCAFAFB1ADF003600554D64 /* EnigmaViewController.swift in Sources */,
 				7FA34E141AE29906009B36D1 /* EnigmaRotorPositionButton.swift in Sources */,
+				7FDF5F691AE598E300819A3D /* EnigmaReflectorButton.swift in Sources */,
 				7FA34E1D1AE3C9D8009B36D1 /* EnimgaPlugboardButton.swift in Sources */,
 				7FA34E161AE299F9009B36D1 /* EnigmaButton.swift in Sources */,
 				7FCAFAF31ADEDF0D00554D64 /* EnigmaConstants.swift in Sources */,
+				7FDF5F6D1AE6A2B800819A3D /* EnigmaRotorSettingButton.swift in Sources */,
+				7FDF5F671AE5980E00819A3D /* EnigmaSettingBaseView.swift in Sources */,
 				7FE9FEB71AE04FC300422A23 /* EnigmaRotorPositionView.swift in Sources */,
 				7FCAFB031ADF0CFC00554D64 /* Enigma.swift in Sources */,
 				7FCAFB051ADF0CFC00554D64 /* Rotor.swift in Sources */,
+				7F3290CC1AE83D7A00215398 /* TabBarViewController.swift in Sources */,
 				7FCAFAF81ADEE60800554D64 /* EnigmaKeyboardKey.swift in Sources */,
 				7FCAFAF61ADEE41300554D64 /* EnigmaKeyboardView.swift in Sources */,
 				7FCAFB071ADF0CFC00554D64 /* Bombe.swift in Sources */,
 				7FCAFB091ADF0CFC00554D64 /* PlugboardBombe.swift in Sources */,
-				7FA34E121AE29108009B36D1 /* EnigmaRotorView.swift in Sources */,
+				7FA34E121AE29108009B36D1 /* EnigmaRotorLayer.swift in Sources */,
 				7FCAFB061ADF0CFC00554D64 /* Reflector.swift in Sources */,
+				7FDF5F6B1AE59B2B00819A3D /* EnigmaReflectorSettingView.swift in Sources */,
 				7FF3BC961ADFD97A0097D09A /* EnigmaSettings.swift in Sources */,
 				7F1941F31ADD694500647CC9 /* AppDelegate.swift in Sources */,
 				7FCAFB081ADF0CFC00554D64 /* RotorBombe.swift in Sources */,
+				7FDF5F6F1AE6D2D000819A3D /* EnigmaRotorSettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

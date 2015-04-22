@@ -106,7 +106,16 @@ class Rotor: Printable {
 
     var rotorSetting: RotorSetting
     private var _rotorPosition = 0
-    var startRotorPosition: Int = 0
+    var startRotorPosition: Int = 0 {
+        didSet {
+            while startRotorPosition >= rotorSetting.input.count {
+                startRotorPosition -= rotorSetting.input.count
+            }
+            while startRotorPosition < 0 {
+                startRotorPosition += rotorSetting.input.count
+            }
+        }
+    }
     var nextRotor: Rotor?
     var rotorPositionLetter: Character {
         get {

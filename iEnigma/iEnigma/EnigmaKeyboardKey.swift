@@ -15,7 +15,11 @@ class EnigmaKeyboardKey: EnigmaButton {
         static let HorizontalSpace: CGFloat = 8
         static let VerticalSpace: CGFloat = 12
     }
-
+    var lightened: Bool = false {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
     
     let key: Character
     
@@ -32,12 +36,7 @@ class EnigmaKeyboardKey: EnigmaButton {
         super.init(coder: aDecoder)
     }
     
-    private func CGRectFromSize(size: CGSize, centedInRect rect: CGRect) -> CGRect {
-        if size.height >= rect.height && size.width >= rect.width { return rect }
-        let y = (rect.height - size.height) / 2
-        let x = (rect.width - size.width) / 2
-        return CGRect(origin: CGPoint(x: x, y: y), size: size)
-    }
+    
     
     override func drawRect(rectToDraw: CGRect) {
         let rect = bounds
@@ -50,7 +49,7 @@ class EnigmaKeyboardKey: EnigmaButton {
         circlePath.stroke()
         circlePath.fill()
         let font = Constants.Design.BodyFont.fontWithSize(ratio * Design.FontScale)
-        let attributeCharacter = NSAttributedString(string: String(key), attributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: tapped ? Constants.Design.Colors.DarkForeground : Constants.Design.Colors.Text])
+        let attributeCharacter = NSAttributedString(string: String(key), attributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: lightened ? Constants.Design.Colors.Light : tapped ? Constants.Design.Colors.DarkForeground : Constants.Design.Colors.Text])
         attributeCharacter.drawInRect(CGRectFromSize(attributeCharacter.size(), centedInRect: rect))
     }
   

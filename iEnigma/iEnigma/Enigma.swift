@@ -23,7 +23,7 @@ class Enigma: Printable {
         return nil
     }
     lazy var plugboard: Plugboard = Plugboard()
-    let reflector: Reflector
+    var reflector: Reflector
     
     init(ref: Reflector.ReflectorType, rotors rotorTypes: [Rotor.RotorType]) {
         var tempRotors = [Rotor]()

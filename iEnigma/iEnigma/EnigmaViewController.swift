@@ -37,6 +37,12 @@ class EnigmaViewController: UIViewController {
                     encodedText = enigma.encodeText(inputText)
                 }
             }
+            if count(inputText) == count(oldValue) + 1 {
+                keyboard.lightenKey(encodedText[advance(encodedText.endIndex, -1)])
+            } else {
+                keyboard.lightenKey(nil)
+            }
+            updateRotorPositionViews()
         }
     }
     var encodedText = "" {
@@ -47,6 +53,12 @@ class EnigmaViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func reloadEncodedText() {
+        for rotor in enigma.rotors { rotor.resetRotor() }
+        encodedText = enigma.encodeText(inputText)
+        updateRotorPositionViews()
     }
     
     @IBOutlet weak var inputTextView: UITextView! {
@@ -95,103 +107,338 @@ class EnigmaViewController: UIViewController {
     
     @IBOutlet weak var rotorPositonViewI: EnigmaRotorPositionView! {
         didSet {
-            rotorPositonViewI.rotorNumber = 0
             rotorPositonViewI.rotorChanged = self.rotorPositionChanged
         }
     }
     @IBOutlet weak var rotorPositonViewII: EnigmaRotorPositionView! {
         didSet {
-            rotorPositonViewII.rotorNumber = 1
             rotorPositonViewII.rotorChanged = self.rotorPositionChanged
         }
     }
     @IBOutlet weak var rotorPositonViewIII: EnigmaRotorPositionView! {
         didSet {
-            rotorPositonViewIII.rotorNumber = 2
             rotorPositonViewIII.rotorChanged = self.rotorPositionChanged
         }
     }
     
-    func rotorPositionChanged(rotorView: EnigmaRotorPositionView) {
-        let text = inputText
-        if let number = rotorView.rotorNumber {
-            enigma.rotor(number)?.rotorPosition = rotorView.currentPositon
-            enigma.rotor(number)?.startRotorPosition = rotorView.currentPositon
-            println(rotorView.currentPositon)
-            EnigmaSettings.rotorPositions = self.enigma.rotors.map { $0.rotorPosition }
-            
-        }
-    }
-    
-    //MARK: - Settings
-    
-    @IBOutlet weak var plugboardLabel: UILabel!
-    @IBOutlet weak var plugboardView: EnimgaPlugboardSettingsView!
-    private var plugboardExpanded: Bool = false
-    
-    @IBOutlet weak var plugboardHeightConstraint: NSLayoutConstraint!
-    @IBAction func plugboardTapped(sender: UITapGestureRecognizer) {
-        var height = self.plugboardView.bounds.width * (2.5/13)
-        self.plugboardExpanded = !self.plugboardExpanded
-        if self.plugboardExpanded {
-            self.plugboardView.hidden = false
-            self.plugboardLeading.constant = -self.view.bounds.width
-            self.plugboardTrailing.constant = -self.view.bounds.width
-            self.view.layoutIfNeeded()
-            self.plugboardHeightConstraint.constant = height
-            self.bottomConstaint.constant = -height
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.view.layoutIfNeeded()
-                }) { fi in
-                    if fi {
-                        self.plugboardTrailing.constant = 0
-                        self.plugboardLeading.constant = 0
-
-                        self.plugboardView.hidden = false
-                        UIView.animateWithDuration(0.3) {
-                            self.view.layoutIfNeeded()
-                        }
-                    }
-                    
-            }
-            
-            
-        } else {
-            self.plugboardLeading.constant = -self.view.bounds.width
-            self.plugboardTrailing.constant = -self.view.bounds.width
-
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.view.layoutIfNeeded()
-                }) { fi in
-                    if fi {
-                        self.plugboardHeightConstraint.constant = 0
-                        self.bottomConstaint.constant = 0
-                        self.plugboardView.hidden = true
-                        self.plugboardTrailing.constant = 0
-                        self.plugboardLeading.constant = 0
-
-                        UIView.animateWithDuration(0.3) {
-                            self.view.layoutIfNeeded()
-                        }
-                    }
-                    
-            }
-        }
-
-       
+    func rotorPositionChanged(rotorView: EnigmaRotorPositionView, stepsAdded: Int) {
+        let orderNumber = rotorView == rotorPositonViewI ? 0 : rotorView == rotorPositonViewII ? 1 : 2
+        enigma.resetRotors()
+        enigma.rotor(orderNumber)?.startRotorPosition += stepsAdded
+        reloadEncodedText()
+        keyboard.lightenKey(nil)
         
     }
     
+    private func updateRotorPositionViews() {
+        rotorPositonViewI?.rotorPosition = enigma.rotor(0)?.rotorPosition ?? 0
+        rotorPositonViewII?.rotorPosition = enigma.rotor(1)?.rotorPosition ?? 0
+        rotorPositonViewIII?.rotorPosition = enigma.rotor(2)?.rotorPosition ?? 0
+        
+    }
+    //MARK: - Setting
+    var expandedSettingsView: UIView? {
+        didSet {
+            if expandedSettingsView != nil { keyboard.lightenKey(nil) }
+            enigmaViewTapRecognizer.enabled = expandedSettingsView != nil
+            reflectorButton.selected = expandedSettingsView == reflectorView
+            if expandedSettingsView != rotorSettingView {
+                deselectRotors()
+            }
+            
+        }
+    }
+    @IBAction func collaspeSettingView(sender: UITapGestureRecognizer) {
+        if expandedSettingsView != nil {
+            swipeViewOut(toLeft: expandedSettingsView == plugboardView)
+        }
+    }
     
-    @IBOutlet weak var plugboardLeading: NSLayoutConstraint!
-    @IBOutlet weak var plugboardTrailing: NSLayoutConstraint!
-    
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet var enigmaViewTapRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var settingBaseView: EnigmaSettingBaseView!
     @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
+    @IBOutlet weak var settingsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var settingsTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var settingsLeadingConstraint: NSLayoutConstraint!
+    var settingHeightWidthMultiplier: CGFloat { return CGFloat((self.traitCollection.horizontalSizeClass == .Compact ? 4 : 2.5)/13) }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ (_) -> Void in
+            if let v = self.expandedSettingsView {
+                let height = size.width * self.settingHeightWidthMultiplier
+                self.bottomConstaint.constant = -height
+                self.settingsHeightConstraint.constant = height
+                self.view.layoutIfNeeded()
+            }
+            }) { _ in }
+    }
+    
+    func swipeViewIn(v: UIView, fromLeft: Bool) {
+        let viewHeight = self.view.bounds.width * settingHeightWidthMultiplier
+        settingBaseView.hidden = true
+        if fromLeft {
+            settingsLeadingConstraint.constant = -self.view.bounds.width
+            settingsTrailingConstraint.constant = -self.view.bounds.width
+        } else {
+            settingsTrailingConstraint.constant = self.view.bounds.width
+            settingsLeadingConstraint.constant = self.view.bounds.width
+        }
+        self.view.layoutIfNeeded()
+        self.bottomConstaint.constant = -viewHeight
+        settingsHeightConstraint.constant = viewHeight
+        self.settingBaseView.addSubview(v)
+        self.settingBaseView.clipsToBounds = true
+        v.frame = self.settingBaseView.bounds
+        v.frame.size.height = viewHeight
+        v.setNeedsLayout()
+        v.layoutIfNeeded()
+        self.expandedSettingsView = v
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+            }) { fi in
+                if fi {
+                    v.frame = self.settingBaseView.bounds
+                    
+                    
+                    if fromLeft {
+                        self.settingsTrailingConstraint.constant = 0
+                        self.settingsLeadingConstraint.constant = 0
+                    } else {
+                        self.settingsLeadingConstraint.constant = 0
+                        self.settingsTrailingConstraint.constant = 0
+                        
+                    }
+                    
+                    self.settingBaseView.hidden = false
+                    UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: UIViewAnimationOptions.AllowAnimatedContent, animations: { () -> Void in
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+                }
+                
+        }
+    }
+    
+    func swipeViewOut(#toLeft: Bool) {
+        if toLeft {
+            settingsLeadingConstraint.constant = -self.view.bounds.width
+            settingsTrailingConstraint.constant = -self.view.bounds.width
+        } else {
+            settingsTrailingConstraint.constant = self.view.bounds.width
+            settingsLeadingConstraint.constant = self.view.bounds.width
+        }
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: UIViewAnimationOptions.AllowAnimatedContent, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+            }) { fi in
+                if fi {
+                    self.settingsHeightConstraint.constant = 0
+                    self.bottomConstaint.constant = 0
+                    self.settingBaseView.hidden = true
+                    for v in self.settingBaseView.subviews {
+                        v.removeFromSuperview()
+                    }
+                    self.expandedSettingsView = nil
+                    if toLeft {
+                        self.settingsTrailingConstraint.constant = 0
+                        self.settingsLeadingConstraint.constant = 0
+                    } else {
+                        self.settingsLeadingConstraint.constant = 0
+                        self.settingsTrailingConstraint.constant = 0
+                    }
+                    UIView.animateWithDuration(0.1) {
+                        self.view.layoutIfNeeded()
+                    }
+                }
+        }
+    }
+    
+    func flipView(v: UIView, toView: UIView) {
+        toView.frame = settingBaseView.bounds
+        toView.clipsToBounds = true
+        UIView.transitionFromView(v, toView: toView, duration: 0.3, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+        self.expandedSettingsView = toView
+    }
+    
+    //MARK: - Plugboard
+    
+    @IBOutlet weak var plugboardLabel: UILabel! {
+        didSet {
+            updatePlugboardLabel()
+        }
+    }
+    
+    func updatePlugboardLabel() {
+        let plugboard = EnigmaSettings.plugboard.sorted {
+            let i1 = idxAlphabet[$0.letter1]!
+            let i2 = idxAlphabet[$0.letter2]!
+            let n1 = idxAlphabet[$1.letter1]!
+            let n2 = idxAlphabet[$1.letter2]!
+            let i = i1 < i2 ? i1 : i2
+            let n = n1 < n2 ? n1 : n2
+            return i < n
+        }
+        var plgStr = ""
+        for pair in plugboard  {
+            if pair.letter1 != pair.letter2 {
+                if idxAlphabet[pair.letter1] < idxAlphabet[pair.letter2] {
+                    plgStr += "\(pair.letter1)\(pair.letter2) "
+                } else {
+                    plgStr += "\(pair.letter2)\(pair.letter1) "
+                }
+            }
+        }
+        if plgStr != plugboardLabel.text {
+            enigma.plugboard = Plugboard(settings: plugboard)
+            reloadEncodedText()
+        }
+        plugboardLabel?.text = count(plgStr) > 0 ? plgStr : "Emty"
+    }
+    
+    lazy var plugboardView = EnimgaPlugboardSettingsView()
+    @IBAction func plugboardTapped(sender: UITapGestureRecognizer) {
+        if let currentSettingView = expandedSettingsView {
+            if currentSettingView == plugboardView {
+                swipeViewOut(toLeft: true)
+            } else {
+                flipView(currentSettingView, toView: plugboardView)
+                
+            }
+        } else {
+            swipeViewIn(plugboardView, fromLeft: true)
+        }
+    }
+    
+    
+    //MARK: - Reflector
+    lazy var reflectorView = EnigmaReflectorSettingView()
+    @IBOutlet weak var reflectorButton: EnigmaReflectorButton! {
+        didSet {
+            updateReflector()
+        }
+    }
+    func updateReflector() {
+        let ref = EnigmaSettings.reflector
+        let newLetter: Character = ref == 0 ? "A" : ref == 1 ? "B" : "C"
+        if reflectorButton?.letter != newLetter {
+            enigma.reflector = Reflector(type: Reflector.ReflectorType(rawValue: ref)!)
+            reloadEncodedText()
+        }
+        reflectorButton?.letter = newLetter
+        
+    }
+    
+    @IBAction func reflectorTapped(sender: EnigmaReflectorButton) {
+        if let currentSettingView = expandedSettingsView {
+            if currentSettingView == reflectorView {
+                swipeViewOut(toLeft: false)
+            } else {
+                flipView(currentSettingView, toView: reflectorView)
+            }
+        } else {
+            swipeViewIn(reflectorView, fromLeft: false)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
+    //MARK: - RotorSettings
+    @IBOutlet weak var rotor1: EnigmaRotorSettingButton! {
+        didSet {
+            rotor1?.rotorType = .EnigmaRotor(orderNumber: 0)
+        }
+    }
+    
+    @IBOutlet weak var rotor2: EnigmaRotorSettingButton! {
+        didSet {
+            rotor2?.rotorType = .EnigmaRotor(orderNumber: 1)
+        }
+    }
+    
+    @IBOutlet weak var rotor3: EnigmaRotorSettingButton! {
+        didSet {
+            rotor3?.rotorType = .EnigmaRotor(orderNumber: 2)
+        }
+    }
+    
+    func updateRotors() {
+        rotor1?.setNeedsDisplay()
+        rotor2?.setNeedsDisplay()
+        rotor3?.setNeedsDisplay()
+        enigma = EnigmaSettings.enigmaFromSettings
+        reloadEncodedText()
+    }
+    
+    func updateOffset() {
+        
+    }
+    
+    func deselectRotors() {
+        rotor1.selected = false
+        rotor2.selected = false
+        rotor3.selected = false
+    }
+    
+    func selectRotor(orderNumber: Int) {
+        switch orderNumber {
+        case 0: rotor1.selected = true
+        case 1: rotor2.selected = true
+        case 2: rotor3.selected = true
+        default: break
+        }
+    }
+    
+    lazy var rotorSettingView = EnigmaRotorSettingView()
+    @IBAction func rotorSettingsButtonTapped(sender: EnigmaRotorSettingButton) {
+        let orderNumber: Int
+        switch sender.rotorType! {
+        case .EnigmaRotor(let num):
+            orderNumber = num
+        default: return
+        }
+        deselectRotors()
+        selectRotor(orderNumber)
+        if let currentSettingView = expandedSettingsView {
+            if currentSettingView == rotorSettingView {
+                if rotorSettingView.rotorOrderNumber == orderNumber {
+                    swipeViewOut(toLeft: false)
+                } else {
+                    rotorSettingView.rotorOrderNumber = orderNumber
+                }
+            } else {
+                rotorSettingView.rotorOrderNumber = orderNumber
+                flipView(currentSettingView, toView: rotorSettingView)
+            }
+        } else {
+            rotorSettingView.rotorOrderNumber = orderNumber
+            swipeViewIn(rotorSettingView, fromLeft: false)
+        }
+    }
+    
+    var rotorObserver: NSObjectProtocol?
+    var plugboardObserver: NSObjectProtocol?
+    var reflectorObserver: NSObjectProtocol?
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.rotorObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Rotors, object: nil, queue: nil) { _ in
+            self.updateRotors()
+        }
+        plugboardObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.plugboardChanged, object: nil, queue: nil) { [unowned self] _ in
+            self.updatePlugboardLabel()
+        }
+        self.reflectorObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Reflector, object: nil, queue: nil) { _ in
+            self.updateReflector()
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        if rotorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(rotorObserver!) }
+        if plugboardObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(plugboardObserver!) }
+        if reflectorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(reflectorObserver!) }
+        
+    }
     
 }

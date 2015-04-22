@@ -10,7 +10,7 @@ import Foundation
 
 struct EnigmaSettings {
     private struct Keys {
-        static let rotors = "ro"
+        static let rotors = "rotor"
         static let rotorPositons = "rp"
         static let rotorOffset = "ro"
         static let reflector = "ref"
@@ -21,6 +21,9 @@ struct EnigmaSettings {
         static let rotorPositonChanged = ["r1not", "r2not", "r3not"]
         static let rotorPositonOldValue = "rPold"
         static let plugboardChanged = "plgchange"
+        static let Reflector = "refNot"
+        static let Offset = "offnot"
+        static let Rotors = "ronot"
     }
     
     private static var userDefault: NSUserDefaults {
@@ -41,16 +44,25 @@ struct EnigmaSettings {
     
     static var rotors: [Int] {
         get {
-            return userDefault.objectForKey(Keys.rotors) as? [Int] ?? [0, 1, 2]
+        return userDefault.objectForKey(Keys.rotors) as? [Int] ?? [0, 1, 2]
         }
         set {
+            let rs = rotors
             userDefault.setObject(newValue, forKey: Keys.rotors)
+            for (idx, r) in enumerate(rs) {
+                if idx < newValue.count  {
+                    if newValue[idx] != r {
+                       NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Rotors, object: nil)
+                    }
+                }
+            }
         }
+        
     }
     
     static var rotorPositions: [Int] {
         get {
-            return userDefault.objectForKey(Keys.rotorPositons) as? [Int] ?? [0, 0, 0]
+        return userDefault.objectForKey(Keys.rotorPositons) as? [Int] ?? [0, 0, 0]
         }
         set {
             let rp = rotorPositions
@@ -64,31 +76,43 @@ struct EnigmaSettings {
                     }
                 }
             }
-
+            
         }
     }
     
     static var rotorOffset: [Int] {
         get {
-            return userDefault.objectForKey(Keys.rotorOffset) as? [Int] ?? [0, 0, 0]
+        return userDefault.objectForKey(Keys.rotorOffset) as? [Int] ?? [0, 0, 0]
         }
         set {
+            let ro = rotorOffset
             userDefault.setObject(newValue, forKey: Keys.rotorOffset)
+            for (idx, o) in enumerate(ro) {
+                if idx < newValue.count  {
+                    if newValue[idx] != o {
+                        NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Offset, object: nil)
+                    }
+                }
+            }
         }
     }
     
     static var reflector: Int {
         get {
-            return userDefault.objectForKey(Keys.reflector) as? Int ?? 1
+        return userDefault.objectForKey(Keys.reflector) as? Int ?? 1
         }
         set {
+            let oldValue = reflector
             userDefault.setObject(newValue, forKey: Keys.reflector)
+            if oldValue != newValue {
+                NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Reflector, object: nil)
+            }
         }
     }
     
     static var plugboard: [PlugboardPair] {
         get {
-            return (userDefault.objectForKey(Keys.plugboard) as? [String])?.map { PlugboardPair($0[$0.startIndex], $0[advance($0.startIndex, 1)]) } ?? []
+        return (userDefault.objectForKey(Keys.plugboard) as? [String])?.map { PlugboardPair($0[$0.startIndex], $0[advance($0.startIndex, 1)]) } ?? []
         }
         set {
             userDefault.setObject(newValue.map { "\($0.letter1)\($0.letter2)" }, forKey: Keys.plugboard)

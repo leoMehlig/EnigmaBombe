@@ -11,8 +11,22 @@ import UIKit
 class EnigmaKeyboardView: UIView {
     
     var keyTappedAction: (Character -> Void)?
-   
-    private lazy var keys: [[UIButton]] = Constants.Keyboard.KeyMatrix.map { keyRow in
+    private var lightenedKey: Character?
+    func lightenKey(char: Character?) {
+        for bs in keys {
+            for b in bs {
+                if b.key == lightenedKey {
+                    b.lightened = false
+                }
+                if b.key == char {
+                    b.lightened = true
+                }
+            }
+            
+        }
+        lightenedKey = char
+    }
+    private lazy var keys: [[EnigmaKeyboardKey]] = Constants.Keyboard.KeyMatrix.map { keyRow in
         return keyRow.map { key in
             var button = EnigmaKeyboardKey(key: key)
             button.addTarget(self, action: Selector("keyTapped:"), forControlEvents: UIControlEvents.TouchUpInside)

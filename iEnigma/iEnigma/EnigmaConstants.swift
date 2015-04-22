@@ -14,6 +14,11 @@ struct Constants {
             let fontSize = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).pointSize
             return UIFont(name: "American Typewriter", size: fontSize) ?? UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         }
+        
+        static var BoldFont: UIFont {
+            let fontSize = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).pointSize
+            return UIFont(name: "AmericanTypewriter-Bold", size: fontSize) ?? UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        }
         struct Colors {
             static let Text = UIColor.whiteColor()
             static let Background = UIColor(red: 72/255, green: 71/255, blue: 75/255, alpha: 1)
@@ -27,5 +32,13 @@ struct Constants {
         static let backspaceCharacter: Character = "←"
         static let KeyMatrix: [[Character]] = [["Q", "W", "E", "R", "T", "Z", "U", "I", "O"], ["A", "S", "D", "F", "G", "H", "J", "K", Constants.Keyboard.backspaceCharacter], ["P", "Y", "X", "C", "V", "B", "N", "M", "L"]]
     }
+}
+
+
+func CGRectFromSize(size: CGSize, centedInRect rect: CGRect) -> CGRect {
+    if size.height >= rect.height && size.width >= rect.width { return rect }
+    let y = (rect.height - size.height) / 2
+    let x = (rect.width - size.width) / 2
+    return CGRect(origin: CGPoint(x: x, y: y), size: size)
 }
 

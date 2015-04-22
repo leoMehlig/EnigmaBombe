@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>0D0FF572-2823-4133-BABF-122B5DFFDB0C</string>
 	<key>IDESourceControlProjectName</key>
-	<string>iEnigma</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A4C77B5B93A4C36F9F72CF465BEA33C43EAC6CAE</key>
 		<string>https://github.com/leoMehlig/EnigmaBombe.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iEnigma/iEnigma.xcodeproj</string>
+	<string>iEnigma/iEnigma.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A4C77B5B93A4C36F9F72CF465BEA33C43EAC6CAE</key>
