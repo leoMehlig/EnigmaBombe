@@ -40,7 +40,7 @@ class iEnigmaTests: XCTestCase {
         
         //Setting up Enigma
         let enigma = Enigma(ref: .B, rotors: .I, .II, .III)
-        enigma.rotor(0)?.offsetPosition = 7
+        enigma.rotor(0)?.offsetPosition = 6
         enigma.rotor(0)?.rotorPositionLetter = "O"
         
         //Encoding String
@@ -100,9 +100,9 @@ class iEnigmaTests: XCTestCase {
             enigma.rotor(0)?.rotorPositionLetter = "O"
             enigma.rotor(1)?.rotorPositionLetter = "F"
             enigma.rotor(2)?.rotorPositionLetter = "K"
-            enigma.rotor(0)?.offsetPosition = 7
-            enigma.rotor(1)?.offsetPosition = 24
-            enigma.rotor(2)?.offsetPosition = 10
+            enigma.rotor(0)?.offsetPosition = 6
+            enigma.rotor(1)?.offsetPosition = 23
+            enigma.rotor(2)?.offsetPosition = 9
             
             //Encoding String
             let encodeStr = enigma.encodeText(text, needsValidation: false)
@@ -113,12 +113,25 @@ class iEnigmaTests: XCTestCase {
         
     }
     
+    func testUnmatchingString() {
+        let text = "ABCDEF"
+        let word = "WWDC"
+        let unmatching = Bombe.completUnmatchingPartsOfText(text, toWord: word)
+        XCTAssert(unmatching.count == 2, "\(unmatching)")
+    }
+    
+    func testSingleUnmatchingString() {
+        let text = "ABCD"
+        let word = "WWDC"
+        let unmatching = Bombe.completUnmatchingPartsOfText(text, toWord: word)
+        XCTAssert(unmatching.count == 1, "\(unmatching)")
+    }
+    
     func testUnmatchingStringPerformence() {
         let testStr = "fmjxqmysvsdttubnffatqqrcqcblmikdlqdavyiztrdxnhvdqmilbdcdgwchjurbzzfaakimrfqdibhghijdnilplgwqidjjpamwotjgurywrocwfecajnwfuducmcqdatazotkjmixyufypxchblqsyzcrkbryotfrmroganoouqymzuybxpfrkmdktdkuccbpxvfuayvpdiorgnhhjyaegvkgrsjqozswahprhvkaupzwxbjjkoazlppavqvlfzukgcbhixlmtgevohcnzlxoppmgqjjdcfxjeuegyadcbpalwnelultwifyrvabmqohxjrxhtygroyedscuvofdagdaluubolqxraliirzlrahaxovqmkpvurcflawtivumiudhontfrhzdcwtphiexigzxvjpnuagnelipvpgqlifmyfwjrkejwjjxngnrfguiouqwnygfhtuyzvqdxkmpfpmwdhkeurdsmeotbtczphlbcduhqf"
         let testWord = "jedox"
-        let bombe = Bombe()
         measureBlock {
-            let t = bombe.completUnmatchingPartsOfText(testStr.uppercaseString, toWord: testWord.uppercaseString)
+            let t = Bombe.completUnmatchingPartsOfText(testStr.uppercaseString, toWord: testWord.uppercaseString)
             
             XCTAssert(t.count == 406, "\(t)")
         }
@@ -138,7 +151,7 @@ class iEnigmaTests: XCTestCase {
         if let loops = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {
             //measureBlock {
             let bombe = PlugboardBombe(enigma: Enigma(ref: .A, rotors: .I, .II, .III))
-            XCTAssertNotNil(bombe.plugboardForLoops(loops, text: testText, enText: encodedText), "failed")
+            XCTAssertNotNil(bombe.plugboardForLoops(loops), "failed")
             
             
             // }
@@ -153,7 +166,7 @@ class iEnigmaTests: XCTestCase {
         if let loops = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {
             measureBlock {
                 let bombe = PlugboardBombe(enigma: Enigma(ref: .A, rotors: .I, .II, .III))
-                XCTAssertNotNil(bombe.plugboardForLoops(loops, text: testText, enText: encodedText), "failed")
+                XCTAssertNotNil(bombe.plugboardForLoops(loops), "failed")
             }
         }
     }
@@ -178,6 +191,11 @@ class iEnigmaTests: XCTestCase {
         
     }
     
+    func testRotorOrders() {
+        let order = Rotor.RotorType.possibleOrders(numberOfRotors: 3)
+        
+    }
+    
     
     func testLoopDeductionPerformance() {
         measureBlock {
@@ -187,7 +205,7 @@ class iEnigmaTests: XCTestCase {
             let encodedText = enigma.encodeText(testText)
             let bombe = PlugboardBombe(enigma: Enigma(ref: .A, rotors: .I, .II, .III))
             if let con = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {
-                println(bombe.plugboardForLoops(con, text: testText, enText: encodedText))
+                println(bombe.plugboardForLoops(con))
             }
         }
         
@@ -215,7 +233,7 @@ class iEnigmaTests: XCTestCase {
                 rb.decodedString = testText
                 rb.testRotors = { (e) in
                     let bombe = PlugboardBombe(enigma: e)
-                    return bombe.plugboardForLoops(loops, text: testText, enText: encodedText)
+                    return bombe.plugboardForLoops(loops)
                     
                 }
                 while rb.running { }

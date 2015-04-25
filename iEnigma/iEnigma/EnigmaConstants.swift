@@ -26,6 +26,8 @@ struct Constants {
             static let DarkForeground = UIColor(red: 61/255, green: 54/255, blue: 54/255, alpha: 1)
             static let Letter = UIColor(red: 1, green: 1, blue: 122/255, alpha: 1)
             static let Light = UIColor(red: 252/255, green: 254/255, blue: 107/255, alpha: 1)
+            static let DrumLetterBorder = UIColor(red: 201/255, green: 180/255, blue: 164/255, alpha: 1)
+            
         }
     }
     struct Keyboard {

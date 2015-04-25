@@ -53,7 +53,7 @@ class EnimgaPlugboardSettingsView: UIView {
     var observer: NSObjectProtocol?
     func addPlugboardObserver() {
         if observer == nil {
-            observer = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.plugboardChanged, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            observer = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Plugboard, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
                 self.drawPlugboard()
             }
         }

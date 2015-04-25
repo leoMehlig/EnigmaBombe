@@ -14,7 +14,6 @@ class PlugboardBombe {
         mutating func addPair(c1: Character, _ c2: Character) -> Bool {
             if let c = dict[c1] { if c != c2 { return false } }
             if let c = dict[c2] { if c != c1 { return false } }
-            //if self.containsWrongPair(c1, c2) { return false }
             dict[c1] = c2
             dict[c2] = c1
             return true
@@ -52,7 +51,7 @@ class PlugboardBombe {
     private typealias AssumtionState = (loopIdx: Int, deductions: Deductions)
     private var assumtionStates = [AssumtionState]()
     private var startIdxs = [Int: Int]()
-    func plugboardForLoops(loops: [Loop], text: String, enText: String) -> Plugboard? {
+    func plugboardForLoops(loops: [Loop]) -> Plugboard? {
         enigma.rotor(0)?.resetRotor()
         var deductions = Deductions()
         var currentLoopIdx = 0

@@ -48,7 +48,7 @@ class Enigma: Printable {
     func encodeText(text: String, needsValidation: Bool = true) -> String {
         var inputText = text
         if needsValidation {
-            validateText(text)
+            Enigma.validateText(text)
         }
         var encodedText = ""
         
@@ -91,7 +91,7 @@ class Enigma: Printable {
     }
     
     
-    func validateText(text: String) -> String {
+    class func validateText(text: String) -> String {
         
         let t = text.uppercaseString
         var validText = ""

@@ -18,9 +18,8 @@ struct EnigmaSettings {
     }
     
     struct Notifications {
-        static let rotorPositonChanged = ["r1not", "r2not", "r3not"]
-        static let rotorPositonOldValue = "rPold"
-        static let plugboardChanged = "plgchange"
+        static let Positon = "poNot"
+        static let Plugboard = "plgchange"
         static let Reflector = "refNot"
         static let Offset = "offnot"
         static let Rotors = "ronot"
@@ -53,6 +52,7 @@ struct EnigmaSettings {
                 if idx < newValue.count  {
                     if newValue[idx] != r {
                        NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Rotors, object: nil)
+                        break
                     }
                 }
             }
@@ -65,14 +65,13 @@ struct EnigmaSettings {
         return userDefault.objectForKey(Keys.rotorPositons) as? [Int] ?? [0, 0, 0]
         }
         set {
-            let rp = rotorPositions
+            let ps = rotorPositions
             userDefault.setObject(newValue, forKey: Keys.rotorPositons)
-            for (idx, p) in enumerate(rp) {
+            for (idx, p) in enumerate(ps) {
                 if idx < newValue.count  {
                     if newValue[idx] != p {
-                        if idx < Notifications.rotorPositonChanged.count {
-                            NSNotificationCenter.defaultCenter().postNotificationName(Notifications.rotorPositonChanged[idx], object: nil, userInfo: [Notifications.rotorPositonOldValue: p])
-                        }
+                        NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Positon, object: nil)
+                        break
                     }
                 }
             }
@@ -91,6 +90,7 @@ struct EnigmaSettings {
                 if idx < newValue.count  {
                     if newValue[idx] != o {
                         NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Offset, object: nil)
+                        break
                     }
                 }
             }
@@ -116,7 +116,7 @@ struct EnigmaSettings {
         }
         set {
             userDefault.setObject(newValue.map { "\($0.letter1)\($0.letter2)" }, forKey: Keys.plugboard)
-            NSNotificationCenter.defaultCenter().postNotificationName(Notifications.plugboardChanged, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Plugboard, object: nil)
         }
     }
     

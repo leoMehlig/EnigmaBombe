@@ -213,10 +213,10 @@ class Rotor: Printable {
     
     var offsetPosition: Int {
         get {
-            return rotorSetting.offset + 1
+            return rotorSetting.offset
         }
         set {
-            var n = newValue - 1
+            var n = newValue
             while n < 0 {
                 n += alphabet.count
             }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnigmaViewController: UIViewController {
+class EnigmaViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     var enigma = EnigmaSettings.enigmaFromSettings
     
     //MARK: - TextView
@@ -49,8 +49,6 @@ class EnigmaViewController: UIViewController {
         didSet {
             if encodedText != oldValue {
                 encodeTextView.attributedText = attributedStrFromString(encodedText)
-                EnigmaSettings.rotorPositions = self.enigma.rotors.map { $0.rotorPosition }
-                
             }
         }
     }
@@ -65,28 +63,104 @@ class EnigmaViewController: UIViewController {
         didSet {
             inputTextView?.font = Constants.Design.BodyFont
             inputTextView?.backgroundColor = UIColor(patternImage: UIImage(named: "clean_paper_background.png")!)
-            inputTextView?.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+//            inputTextView?.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
         }
     }
     @IBOutlet weak var encodeTextView: UITextView! {
         didSet {
             encodeTextView?.font = Constants.Design.BodyFont
             encodeTextView?.backgroundColor = UIColor(patternImage: UIImage(named: "clean_paper_background.png")!)
-            encodeTextView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+//            encodeTextView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+            
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if let textView = object as? UITextView where keyPath == "contentSize" {
-            let topCorrect = textView.bounds.size.height - textView.contentSize.height
-            textView.setContentOffset(CGPoint(x: 0, y: -topCorrect), animated: false)
+//    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+//        if let textView = object as? UITextView where keyPath == "contentSize" {
+//            let topCorrect = textView.bounds.size.height - textView.contentSize.height
+//            textView.setContentOffset(CGPoint(x: 0, y: -topCorrect), animated: false)
+//        }
+//    }
+//    
+    private struct TextViewMenuItemActions {
+        static let Share = Selector("shareEncodedText")
+        static let Paste = Selector("pasteToInputView")
+        static let Reset = Selector("resetText")
+        static let Copy = Selector("copyText")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let shareMenuItem = UIMenuItem(title: "Share", action: TextViewMenuItemActions.Share)
+        let pasteMenuItem = UIMenuItem(title: "Paste", action: TextViewMenuItemActions.Paste)
+        let copyMenuItem = UIMenuItem(title: "Copy", action: TextViewMenuItemActions.Copy)
+        let resetMenuItem = UIMenuItem(title: "Reset", action: TextViewMenuItemActions.Reset)
+        UIMenuController.sharedMenuController().menuItems = [pasteMenuItem, resetMenuItem, shareMenuItem, copyMenuItem]
+    }
+    
+    func shareEncodedText() {
+        let activityVC = UIActivityViewController(activityItems: [encodedText], applicationActivities: nil)
+        activityVC.title = "Share Enigma-Ciphertext"
+        activityVC.popoverPresentationController?.sourceView = encodeTextView
+        presentViewController(activityVC, animated: true, completion: nil)
+    }
+    
+    func pasteToInputView() {
+        if let newText = UIPasteboard.generalPasteboard().string {
+            inputText = Enigma.validateText(newText)
         }
     }
+    
+    func resetText() {
+        inputText = ""
+    }
+    
+    func copyText() {
+        let text = tappedTextView?.text ?? encodedText
+        UIPasteboard.generalPasteboard().string = text
+    }
+    
+    private var tappedTextView: UITextView?
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        switch action {
+        case TextViewMenuItemActions.Share:
+            if tappedTextView == encodeTextView && !encodeTextView.text.isEmpty { return true }
+        case TextViewMenuItemActions.Reset:
+            if (tappedTextView == encodeTextView || tappedTextView == inputTextView) && !inputTextView.text.isEmpty { return true }
+        case TextViewMenuItemActions.Paste:
+            if tappedTextView == inputTextView { return true }
+        case TextViewMenuItemActions.Copy:
+            if tappedTextView != nil { return true }
+        default: return super.canPerformAction(action, withSender: sender)
+        }
+        return false
+    }
+    
     private func attributedStrFromString(string: String) -> NSAttributedString {
         let font = Constants.Design.BodyFont
         return NSAttributedString(string: string, attributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: Constants.Design.Colors.DarkForeground, NSKernAttributeName: 2.0])
     }
     
+    @IBAction func showMenuItem(sender: UITapGestureRecognizer) {
+        if tappedTextView != nil && tappedTextView == sender.view as? UITextView && UIMenuController.sharedMenuController().menuVisible {
+            return
+        }
+        tappedTextView = sender.view as? UITextView
+        if let tappedView = tappedTextView {
+            self.becomeFirstResponder()
+            UIMenuController.sharedMenuController().setTargetRect(CGRect(x: 0, y: tappedView.contentOffset.y + 5, width: tappedView.bounds.width, height: 0), inView: tappedView)
+            UIMenuController.sharedMenuController().setMenuVisible(true, animated: true)
+        }
+    }
+    
+    private func menuDidHide() {
+        tappedTextView = nil
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
     
     //MARK: - Keyboard
     @IBOutlet weak var keyboard: EnigmaKeyboardView! {
@@ -125,11 +199,30 @@ class EnigmaViewController: UIViewController {
         let orderNumber = rotorView == rotorPositonViewI ? 0 : rotorView == rotorPositonViewII ? 1 : 2
         enigma.resetRotors()
         enigma.rotor(orderNumber)?.startRotorPosition += stepsAdded
+        var newPositions = [Int]()
+        for (idx, rp) in enumerate(EnigmaSettings.rotorPositions) {
+            if idx == orderNumber {
+                newPositions.append(enigma.rotor(orderNumber)?.startRotorPosition ?? rp)
+            } else {
+                newPositions.append(rp)
+            }
+        }
+        EnigmaSettings.rotorPositions = newPositions
         reloadEncodedText()
         keyboard.lightenKey(nil)
         
     }
-    
+    private func updateRotorStartPositions() {
+        let positions = EnigmaSettings.rotorPositions
+        var changes = false
+        for (idx, p) in enumerate(positions) {
+            if enigma.rotor(idx)?.startRotorPosition != p {
+                enigma.rotor(idx)?.startRotorPosition = p
+                changes = true
+            }
+        }
+        if changes { reloadEncodedText() }
+    }
     private func updateRotorPositionViews() {
         rotorPositonViewI?.rotorPosition = enigma.rotor(0)?.rotorPosition ?? 0
         rotorPositonViewII?.rotorPosition = enigma.rotor(1)?.rotorPosition ?? 0
@@ -267,30 +360,12 @@ class EnigmaViewController: UIViewController {
     }
     
     func updatePlugboardLabel() {
-        let plugboard = EnigmaSettings.plugboard.sorted {
-            let i1 = idxAlphabet[$0.letter1]!
-            let i2 = idxAlphabet[$0.letter2]!
-            let n1 = idxAlphabet[$1.letter1]!
-            let n2 = idxAlphabet[$1.letter2]!
-            let i = i1 < i2 ? i1 : i2
-            let n = n1 < n2 ? n1 : n2
-            return i < n
-        }
-        var plgStr = ""
-        for pair in plugboard  {
-            if pair.letter1 != pair.letter2 {
-                if idxAlphabet[pair.letter1] < idxAlphabet[pair.letter2] {
-                    plgStr += "\(pair.letter1)\(pair.letter2) "
-                } else {
-                    plgStr += "\(pair.letter2)\(pair.letter1) "
-                }
-            }
-        }
+        let plgStr = EnigmaDisplayer.Plugboard(EnigmaSettings.plugboard)
         if plgStr != plugboardLabel.text {
-            enigma.plugboard = Plugboard(settings: plugboard)
+            enigma.plugboard = Plugboard(settings: EnigmaSettings.plugboard)
             reloadEncodedText()
         }
-        plugboardLabel?.text = count(plgStr) > 0 ? plgStr : "Emty"
+        plugboardLabel?.text = plgStr
     }
     
     lazy var plugboardView = EnimgaPlugboardSettingsView()
@@ -317,7 +392,7 @@ class EnigmaViewController: UIViewController {
     }
     func updateReflector() {
         let ref = EnigmaSettings.reflector
-        let newLetter: Character = ref == 0 ? "A" : ref == 1 ? "B" : "C"
+        let newLetter = EnigmaDisplayer.Reflector(ref)
         if reflectorButton?.letter != newLetter {
             enigma.reflector = Reflector(type: Reflector.ReflectorType(rawValue: ref)!)
             reloadEncodedText()
@@ -338,10 +413,6 @@ class EnigmaViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     //MARK: - RotorSettings
     @IBOutlet weak var rotor1: EnigmaRotorSettingButton! {
@@ -371,7 +442,14 @@ class EnigmaViewController: UIViewController {
     }
     
     func updateOffset() {
-        
+        var changes = false
+        for (idx, offset) in enumerate(EnigmaSettings.rotorOffset) {
+            if enigma.rotor(idx)?.offsetPosition != offset {
+                enigma.rotor(idx)?.offsetPosition = offset
+                changes = true
+            }
+        }
+        if changes { reloadEncodedText() }
     }
     
     func deselectRotors() {
@@ -419,26 +497,56 @@ class EnigmaViewController: UIViewController {
     var rotorObserver: NSObjectProtocol?
     var plugboardObserver: NSObjectProtocol?
     var reflectorObserver: NSObjectProtocol?
-    
+    var menuObserver: NSObjectProtocol?
+    var offsetObserver: NSObjectProtocol?
+    var positionObserver: NSObjectProtocol?
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.rotorObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Rotors, object: nil, queue: nil) { _ in
             self.updateRotors()
         }
-        plugboardObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.plugboardChanged, object: nil, queue: nil) { [unowned self] _ in
+        plugboardObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Plugboard, object: nil, queue: nil) { [unowned self] _ in
             self.updatePlugboardLabel()
         }
         self.reflectorObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Reflector, object: nil, queue: nil) { _ in
             self.updateReflector()
         }
+        
+        offsetObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Offset, object: nil, queue: nil) { _ in
+            self.updateOffset()
+        }
+        positionObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Positon, object: nil, queue: nil) { _ in
+            self.updateRotorStartPositions()
+        }
+        self.updateRotorStartPositions()
+        
+        menuObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIMenuControllerDidHideMenuNotification, object: nil, queue: nil) { _ in
+            self.menuDidHide()
+        }
+       // if showInfo { performSegueWithIdentifier("enigmaInfo", sender: self) }
+        showInfo = false
     }
-    
+    private var showInfo = true
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        
+
         if rotorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(rotorObserver!) }
         if plugboardObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(plugboardObserver!) }
         if reflectorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(reflectorObserver!) }
-        
+        if offsetObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(offsetObserver!) }
+        if positionObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(positionObserver!) }
+
+        if menuObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(menuObserver!) }
+
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        (segue.destinationViewController as? UIViewController)?.popoverPresentationController?.delegate = self
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
 }
