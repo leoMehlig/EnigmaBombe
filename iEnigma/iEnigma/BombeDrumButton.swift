@@ -31,6 +31,7 @@ class BombeDrumButton: EnigmaButton {
     @IBInspectable var contentText: String? {
         didSet {
             textLabel.text = contentText
+            updateText()
             textLabel.hidden = contentText == nil
         }
     }
@@ -38,6 +39,7 @@ class BombeDrumButton: EnigmaButton {
     override var tapped: Bool {
         didSet {
             drumLayer.highlighted = tapped
+            textLabel.textColor = tapped ? Constants.Design.Colors.Text : Constants.Design.Colors.DarkForeground
         }
     }
     
@@ -65,21 +67,27 @@ class BombeDrumButton: EnigmaButton {
         let l = UILabel()
         l.font = Constants.Design.BoldFont.fontWithSize(32)
         l.textColor = Constants.Design.Colors.DarkForeground
-        l.minimumScaleFactor = 0.9
+        l.minimumScaleFactor = 0.7
+
         l.adjustsFontSizeToFitWidth = true
         l.textAlignment = .Center
         return l
         }()
-    
+    private func updateText() {
+        let textLength = count(contentText  ?? "")
+        let fontScale = textLength <= 3  ? 0.6 : 1.2 / CGFloat(textLength)
+        textLabel.font = Constants.Design.BoldFont.fontWithSize(textLabel.bounds.height * fontScale)
+    }
     override func layoutSubviews() {
         drumLayer.frame = bounds
         layer.addSublayer(drumLayer)
+        drumLayer.setNeedsDisplay()
         var rect = CGRect(x: borderWidth + letterBorderWidth, y: borderWidth + letterBorderWidth, width: frame.width - borderWidth * 2 - letterBorderWidth * 2, height: frame.height - borderWidth * 2 - letterBorderWidth * 2)
-        rect = frame
         let r = min(rect.height, rect.width)
         let cap = sqrt(pow((sqrt(r * r * 2) - r) / 2, 2) / 2)
         textLabel.frame.size = CGSize(width: (rect.width - 2 * cap) * textLabel.transform.a, height: (rect.height - 2 * cap) * textLabel.transform.d)
         textLabel.center = CGPoint(x: bounds.midX, y: bounds.midY)
+        updateText()
         self.addSubview(textLabel)
         
         

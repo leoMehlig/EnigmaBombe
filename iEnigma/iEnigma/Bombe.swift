@@ -66,7 +66,21 @@ class Bombe {
         rotorSequence = RotorSequence(onlySetting: !rotor)
         reflectorSequnce = ReflectorSequence(onlySetting: !reflector)
         positionSequence = PositionOffsetSequence(onlySettingValue: !position ? EnigmaSettings.rotorPositions : nil)
-        offsetSequence = PositionOffsetSequence(onlySettingValue: !offset ? EnigmaSettings.rotorOffset : nil)
+        offsetSequence = PositionOffsetSequence(onlySettingValue: EnigmaSettings.rotorOffset)
+    }
+    
+    class func timeNeededStringForWords(w: Int, rotor: Bool, ref: Bool, pos: Bool) -> String {
+        let count: Int = w * (rotor ? 6 : 1) * (ref ? 3 : 1) * (pos ? 17_576 : 1)
+        let time = Double(count) * 0.0025 + 20
+        let seconds = lround(time)
+        let hour = seconds / 3600
+        let mins = (seconds & 3600) / 60
+        let secs  = seconds % 60
+        var str = ""
+        str += hour > 0 ? "\(hour)h " : ""
+        str += mins > 0 ? "\(mins)m " : ""
+        str += "\(secs)s"
+        return str
     }
     
     weak var delegate: BombeCompletionDelegate?
@@ -80,12 +94,15 @@ class Bombe {
     
     func startBombeWithWord(word: String, decryptedWords: [StringWithLocation]) {
         queue.addOperationWithBlock {
-            self.totalCount = decryptedWords.count * self.rotorSequence.count * self.reflectorSequnce.count * self.positionSequence.count * self.offsetSequence.count
+           
+            self.totalCount = decryptedWords.count * self.rotorSequence.count * self.reflectorSequnce.count * self.positionSequence.count
             self.nextCount = Double(self.totalCount) / 100
             self.percentCount = self.nextCount
             self.currentCount = 0
             self.stopped = false
+            
             for (deWord, deLocation) in decryptedWords {
+
                 if let loops = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: word, decodedStr: deWord) {
                     for rotorOrder in self.rotorSequence {
                         for ref in self.reflectorSequnce {
@@ -93,6 +110,10 @@ class Bombe {
                             for pos in self.positionSequence {
                                 for (idx, p) in enumerate(pos) {
                                     enigma.rotor(idx)?.startRotorPosition = p
+                                }
+                                enigma.rotor(0)?.resetRotor(andAdd: deLocation)
+                                for r in enigma.rotors {
+                                    r.startRotorPosition = r.rotorPosition
                                 }
                                 for off in self.offsetSequence {
                                     if self.stopped {
@@ -117,14 +138,13 @@ class Bombe {
                 }
                 self.delegate?.completedWord((deWord, deLocation))
             }
+            self.stopped = true
             self.delegate?.completedAll()
             
         }
     }
     
     func resetEnigmaToRightPosition(enigma: Enigma, stringLocation: StringWithLocation) -> Bool {
-        println(enigma)
-        println(stringLocation)
         enigma.resetRotors()
         for _ in 0..<stringLocation.1 {
             enigma.rotor(0)?.stepBack()

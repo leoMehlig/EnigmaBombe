@@ -213,36 +213,7 @@ class iEnigmaTests: XCTestCase {
     }
     
     
-    func stestBombePerformance() {
-        measureBlock {
-            let testText = ("wearethewatchersonthewall").uppercaseString
-            let enigma = Enigma(ref: .A, rotors: .I, .II, .III)
-            enigma.rotor(0)?.rotorPositionLetter = "F"
-            enigma.rotor(1)?.rotorPositionLetter = "Q"
-            enigma.rotor(2)?.rotorPositionLetter = "C"
-            enigma.plugboard.pairs = [PlugboardPair("A","V"), PlugboardPair("D", "M"), PlugboardPair("F", "T"), PlugboardPair("H", "I"), PlugboardPair("K", "O"), PlugboardPair("P", "S"), PlugboardPair("Q", "X"), PlugboardPair("R", "W")]
-            let bombe = PlugboardBombe(enigma: enigma)
-            let encodedText = enigma.encodeText(testText)
-            if let loops = PlugboardBombe.LoopCreater.loopConnectionsFrom(encodedStr: testText, decodedStr: encodedText) {
-                for loop in loops {
-                    println(loop)
-                }
-                println(encodedText)
-                let rb = RotorBombe()
-                rb.encodedString = encodedText
-                rb.decodedString = testText
-                rb.testRotors = { (e) in
-                    let bombe = PlugboardBombe(enigma: e)
-                    return bombe.plugboardForLoops(loops)
-                    
-                }
-                while rb.running { }
-            }
-            
-            
-            
-        }
-    }
+    
     
     func testResetRotorPosition() {
         let enigma = Enigma(ref: .A, rotors: .I, .II, .III)
@@ -253,6 +224,6 @@ class iEnigmaTests: XCTestCase {
         
     }
     
-    
-    
 }
+
+

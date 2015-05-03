@@ -220,6 +220,9 @@ class Rotor: Printable {
             while n < 0 {
                 n += alphabet.count
             }
+            while n >= alphabet.count {
+                n -= alphabet.count
+            }
             rotorSetting.offset = n
         }
     }

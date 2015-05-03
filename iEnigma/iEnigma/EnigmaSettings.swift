@@ -15,6 +15,7 @@ struct EnigmaSettings {
         static let rotorOffset = "ro"
         static let reflector = "ref"
         static let plugboard = "plg"
+        static let input = "inp"
     }
     
     struct Notifications {
@@ -23,6 +24,7 @@ struct EnigmaSettings {
         static let Reflector = "refNot"
         static let Offset = "offnot"
         static let Rotors = "ronot"
+
     }
     
     private static var userDefault: NSUserDefaults {
@@ -30,6 +32,7 @@ struct EnigmaSettings {
     }
     
     static var enigmaFromSettings: Enigma {
+        get {
         let enigma = Enigma(ref: Reflector.ReflectorType(rawValue: reflector)!, rotors: rotors.map { Rotor.RotorType(rawValue: $0)! })
         let positions = rotorPositions
         let offset = rotorOffset
@@ -39,7 +42,18 @@ struct EnigmaSettings {
         }
         enigma.plugboard = Plugboard(settings: plugboard)
         return enigma
+        }
+        set {
+            let enigma = newValue
+            EnigmaSettings.rotors = enigma.rotors.map { $0.rotorSetting.type?.rawValue ?? 0 }
+            EnigmaSettings.rotorPositions = enigma.rotors.map { $0.startRotorPosition }
+            EnigmaSettings.rotorOffset = enigma.rotors.map { $0.offsetPosition }
+            EnigmaSettings.reflector = enigma.reflector.type?.rawValue ?? 0
+            EnigmaSettings.plugboard = enigma.plugboard.pairs
+        }
     }
+    
+
     
     static var rotors: [Int] {
         get {
@@ -117,6 +131,15 @@ struct EnigmaSettings {
         set {
             userDefault.setObject(newValue.map { "\($0.letter1)\($0.letter2)" }, forKey: Keys.plugboard)
             NSNotificationCenter.defaultCenter().postNotificationName(Notifications.Plugboard, object: nil)
+        }
+    }
+    
+    static var inputText: String {
+        get {
+            return userDefault.stringForKey(Keys.input) ?? ""
+        }
+        set {
+            userDefault.setObject(newValue, forKey: Keys.input)
         }
     }
     

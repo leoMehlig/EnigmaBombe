@@ -67,13 +67,11 @@ class BombeEnigmaDetailsTableViewController: UITableViewController {
         if indexPath == deTextCellIndexPath {
             cell = deTextCell
             label = decryptedTextLabel
-        } else if indexPath == plgbCellIndexPath {
-            cell = plgbCell
-            label = plugboardLabel
         } else {
             return tableView.rowHeight
         }
-        label.preferredMaxLayoutWidth = tableView.bounds.width - 16
+        label.preferredMaxLayoutWidth = tableView.bounds.width - 30
+        label.layoutIfNeeded()
         return max(cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height + 5, tableView.rowHeight)
         
     }

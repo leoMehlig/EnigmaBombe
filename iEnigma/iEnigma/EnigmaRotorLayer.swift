@@ -80,7 +80,11 @@ class EnigmaRotorLayer: CALayer {
    
     
     
-    
+    var radius: (CGFloat, CGFloat) {
+        let outterRadius: CGFloat = min(bounds.height / 2, bounds.width / 2) - borderWidth - margin
+        let innerRadius: CGFloat =  outterRadius - outterRadius / 10
+        return (outterRadius, innerRadius)
+    }
     
     private func tanDeg(x: CGFloat) -> CGFloat {
         return tan(x /  CGFloat(180 / M_PI))
@@ -97,10 +101,7 @@ class EnigmaRotorLayer: CALayer {
     
     private func gearWheelPointsForRect(rect: CGRect) -> (inner: [CGPoint], outter: [CGPoint]){
         let viewCenter = CGPoint(x: rect.midX, y: rect.midY)
-        let outterRadius: CGFloat = min(rect.height / 2, rect.width / 2) - borderWidth - margin
         
-        
-        let innerRadius: CGFloat =  outterRadius - outterRadius / 10
         let points: Int
         if crogs < 10 {
             points = 10
@@ -109,7 +110,7 @@ class EnigmaRotorLayer: CALayer {
         } else {
             points = crogs
         }
-        
+        let (outterRadius, innerRadius) = radius
         let innerA = CGPoint(x: viewCenter.x, y: viewCenter.y - innerRadius)
         let outterA = CGPoint(x: viewCenter.x, y: viewCenter.y - outterRadius)
         let angle = 360 / CGFloat(points)

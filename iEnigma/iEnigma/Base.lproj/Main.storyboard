@@ -1,44 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GCZ-tU-FxZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mGx-qw-hUI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar View Controller-->
-        <scene sceneID="ofT-e3-Qyh">
-            <objects>
-                <tabBarController id="GCZ-tU-FxZ" customClass="TabBarViewController" customModule="iEnigma" customModuleProvider="target" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="TeA-yI-UIV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="O3f-sG-sNX" kind="relationship" relationship="viewControllers" id="mTW-Up-JTh"/>
-                        <segue destination="nvg-dQ-5Cz" kind="relationship" relationship="viewControllers" id="QzF-hB-Yf0"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FeC-i2-kgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-802" y="-756"/>
-        </scene>
-        <!--Enigma-->
+        <!--The Enigma-->
         <scene sceneID="7VX-oI-dJq">
             <objects>
-                <viewController id="nvg-dQ-5Cz" customClass="EnigmaViewController" customModule="iEnigma" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="The Enigma" id="nvg-dQ-5Cz" customClass="EnigmaViewController" customModule="Leonard_Mehlig" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hIp-c1-pdW"/>
                         <viewControllerLayoutGuide type="bottom" id="rWP-hP-Azo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f5Q-mV-3Tq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-LC-zQa" userLabel="Rotor II" customClass="EnigmaRotorSettingButton" customModule="iEnigma" customModuleProvider="target">
-                                <rect key="frame" x="275" y="53" width="50" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-LC-zQa" userLabel="Rotor II" customClass="EnigmaRotorSettingButton" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                <rect key="frame" x="275" y="97" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VR2-LC-zQa" secondAttribute="height" id="Nkt-h2-Y6H"/>
@@ -53,8 +34,8 @@
                                     <action selector="rotorSettingsButtonTapped:" destination="nvg-dQ-5Cz" eventType="touchUpInside" id="jWB-J7-lMX"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLZ-wX-ila" userLabel="Rotor III" customClass="EnigmaRotorSettingButton" customModule="iEnigma" customModuleProvider="target">
-                                <rect key="frame" x="333" y="53" width="50" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLZ-wX-ila" userLabel="Rotor III" customClass="EnigmaRotorSettingButton" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                <rect key="frame" x="333" y="97" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ama-BK-ZKg"/>
@@ -69,8 +50,8 @@
                                     <action selector="rotorSettingsButtonTapped:" destination="nvg-dQ-5Cz" eventType="touchUpInside" id="AKK-Y5-KuR"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ5-o3-Bu4" userLabel="Reflector" customClass="EnigmaReflectorButton" customModule="iEnigma" customModuleProvider="target">
-                                <rect key="frame" x="534" y="53" width="50" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ5-o3-Bu4" userLabel="Reflector" customClass="EnigmaReflectorButton" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                <rect key="frame" x="534" y="97" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -95,8 +76,8 @@
                                     <action selector="reflectorTapped:" destination="nvg-dQ-5Cz" eventType="touchUpInside" id="8yj-Ji-YuY"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-2u-bwb" userLabel="Rotor I" customClass="EnigmaRotorSettingButton" customModule="iEnigma" customModuleProvider="target">
-                                <rect key="frame" x="217" y="53" width="50" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-2u-bwb" userLabel="Rotor I" customClass="EnigmaRotorSettingButton" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                <rect key="frame" x="217" y="97" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="250" constant="70" id="6zg-7x-AQO">
@@ -115,8 +96,8 @@
                                     <action selector="rotorSettingsButtonTapped:" destination="nvg-dQ-5Cz" eventType="touchUpInside" id="ajj-Se-3vz"/>
                                 </connections>
                             </view>
-                            <view hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Juf-Ne-MFN" userLabel="SettingBaseView" customClass="EnigmaSettingBaseView" customModule="iEnigma" customModuleProvider="target">
-                                <rect key="frame" x="16" y="113" width="568" height="0.0"/>
+                            <view hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Juf-Ne-MFN" userLabel="SettingBaseView" customClass="EnigmaFillingSubviewView" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                <rect key="frame" x="16" y="157" width="568" height="0.0"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="D2M-oG-eau"/>
@@ -131,7 +112,7 @@
                                 </variation>
                             </view>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="AB CD EF GH" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="none" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-u6-NwT">
-                                <rect key="frame" x="16" y="43" width="108" height="70"/>
+                                <rect key="frame" x="16" y="87" width="108" height="70"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="JFL-31-EOK"/>
@@ -155,32 +136,23 @@
                                     <outletCollection property="gestureRecognizers" destination="sW5-O9-tXS" appends="YES" id="TCp-GN-PEk"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Plugboard:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF0-Rd-Gmr">
-                                <rect key="frame" x="16" y="28" width="66" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="15" id="0Ln-3v-ZsS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotors:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiP-x9-13H">
-                                <rect key="frame" x="217" y="27" width="166" height="15"/>
+                                <rect key="frame" x="217" y="71" width="166" height="15"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reflector:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrP-Qd-OJC">
-                                <rect key="frame" x="534" y="27" width="59" height="15"/>
+                                <rect key="frame" x="534" y="71" width="59" height="15"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upm-cx-rwA">
-                                <rect key="frame" x="0.0" y="121" width="600" height="430"/>
+                                <rect key="frame" x="0.0" y="165" width="600" height="435"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-fg-4bs" customClass="EnigmaKeyboardView" customModule="iEnigma" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="210" width="560" height="200"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbk-fg-4bs" customClass="EnigmaKeyboardView" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="215" width="560" height="200"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="HUg-E7-afG"/>
@@ -197,8 +169,8 @@
                                             <rect key="frame" x="20" y="210" width="360" height="144"/>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-5Z-nNP" customClass="EnigmaRotorPositionView" customModule="iEnigma" customModuleProvider="target">
-                                        <rect key="frame" x="517" y="139" width="63" height="63"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-5Z-nNP" customClass="EnigmaRotorPositionView" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                        <rect key="frame" x="512" y="139" width="68" height="68"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="xA4-5Z-nNP" secondAttribute="height" multiplier="1:1" id="lLu-NJ-rf6"/>
@@ -233,8 +205,8 @@
                                             <outletCollection property="gestureRecognizers" destination="TQG-rq-bjW" appends="YES" id="xmT-Cm-w6C"/>
                                         </connections>
                                     </textView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="643-lr-Y5C" customClass="EnigmaRotorPositionView" customModule="iEnigma" customModuleProvider="target">
-                                        <rect key="frame" x="269" y="139" width="63" height="63"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="643-lr-Y5C" customClass="EnigmaRotorPositionView" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                        <rect key="frame" x="266" y="139" width="68" height="68"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="643-lr-Y5C" secondAttribute="height" multiplier="1:1" id="6oj-vi-gGa"/>
@@ -264,8 +236,8 @@
                                             <rect key="frame" x="20" y="335" width="360" height="15"/>
                                         </variation>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txb-jx-vFP" customClass="EnigmaRotorPositionView" customModule="iEnigma" customModuleProvider="target">
-                                        <rect key="frame" x="13" y="139" width="63" height="63"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txb-jx-vFP" customClass="EnigmaRotorPositionView" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="139" width="68" height="68"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Txb-jx-vFP" secondAttribute="height" multiplier="1:1" id="Mcd-a3-CEt"/>
@@ -323,6 +295,15 @@
                                     <outletCollection property="gestureRecognizers" destination="a6d-tV-a8R" appends="YES" id="yLc-Cf-UfU"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Plugboard:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF0-Rd-Gmr">
+                                <rect key="frame" x="16" y="72" width="66" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="15" id="0Ln-3v-ZsS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -366,6 +347,7 @@
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="centerY" secondItem="dLZ-wX-ila" secondAttribute="centerY" id="ZFe-9X-rUt"/>
                             <constraint firstItem="CCy-2u-bwb" firstAttribute="height" secondItem="VR2-LC-zQa" secondAttribute="height" id="be8-G1-SFt"/>
                             <constraint firstItem="tiP-x9-13H" firstAttribute="leading" secondItem="CCy-2u-bwb" secondAttribute="leading" priority="750" id="eGg-oK-zmg"/>
+                            <constraint firstItem="aF0-Rd-Gmr" firstAttribute="top" secondItem="hIp-c1-pdW" secondAttribute="bottom" id="epH-Xy-Xtb"/>
                             <constraint firstItem="tiP-x9-13H" firstAttribute="baseline" secondItem="aF0-Rd-Gmr" secondAttribute="baseline" constant="-1" id="fGJ-go-and"/>
                             <constraint firstItem="VR2-LC-zQa" firstAttribute="top" secondItem="tiP-x9-13H" secondAttribute="bottom" id="h4s-PQ-CHB"/>
                             <constraint firstItem="Juf-Ne-MFN" firstAttribute="trailing" secondItem="f5Q-mV-3Tq" secondAttribute="trailingMargin" id="jAY-Zm-Ngd"/>
@@ -387,12 +369,13 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="tXm-wL-wF9"/>
                                 <exclude reference="Gyk-3a-htk"/>
                                 <exclude reference="WEZ-5u-JZX"/>
                                 <exclude reference="rQV-Aq-CZY"/>
                                 <exclude reference="YfE-Yn-39G"/>
                                 <exclude reference="jAY-Zm-Ngd"/>
+                                <exclude reference="epH-Xy-Xtb"/>
+                                <exclude reference="tXm-wL-wF9"/>
                                 <exclude reference="Eq9-If-iwc"/>
                                 <exclude reference="GWK-dh-pxw"/>
                                 <exclude reference="Q14-y4-XWG"/>
@@ -414,7 +397,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Enigma" image="EnimgaTapIcon" selectedImage="EnimgaTapIconSelected" id="e1e-Hh-WXA"/>
+                    <navigationItem key="navigationItem" title="The Enigma" id="BJR-tD-T7I">
+                        <barButtonItem key="backBarButtonItem" title="Enigma" id="4Jl-TJ-IKE"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomConstaint" destination="9Ru-9s-h4y" id="wUn-XD-gxh"/>
                         <outlet property="encodeTextView" destination="mzD-gM-Fkv" id="QJW-3a-EIP"/>
@@ -457,51 +442,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-104" y="-756"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="5sT-SU-HxX">
-            <objects>
-                <viewController id="eYO-UJ-ngc" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="r8t-K2-o5p"/>
-                        <viewControllerLayoutGuide type="bottom" id="JZ6-gB-edR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ouf-Bq-Ppc">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6v-Sl-ehS">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">The Enigma is a encryption device used by the germans during World War II to send secret radio messages. This is a simulator that encrypts your text into real Enigma I code. by tapping on the icons above you can change the Enigma-Setting. For a start just type something in the keyboard below.
-
-For the Enigma-Decryption Simulator go to the “Bombe”-Tab.
-Some information about me can be found under the “Me”-Tab.
-
-For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machine</string>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="t6v-Sl-ehS" firstAttribute="leading" secondItem="ouf-Bq-Ppc" secondAttribute="leadingMargin" constant="-16" id="2hs-As-WBG"/>
-                            <constraint firstItem="t6v-Sl-ehS" firstAttribute="top" secondItem="ouf-Bq-Ppc" secondAttribute="topMargin" id="72n-5B-MR1"/>
-                            <constraint firstItem="JZ6-gB-edR" firstAttribute="top" secondItem="t6v-Sl-ehS" secondAttribute="bottom" id="Hvj-Ty-qcW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="t6v-Sl-ehS" secondAttribute="trailing" constant="-16" id="rxW-24-HWX"/>
-                        </constraints>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="400"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vku-gS-Flp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="442" y="-978"/>
+            <point key="canvasLocation" x="162" y="-627"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pMw-Me-HjP">
@@ -518,7 +459,7 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmH-3a-6PG">
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">The Bombe needs a word (or a word combination without widespaces) that could be in the encypted text. Because the bombe only gives back one Plugboard-Combination per Setting choose a text as long as possible.</string>
+                                <string key="text">Because the Bombe can only determine one possible Plugboard wiring per setting choose a word/word combination as long as possible (at least ten characters)</string>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -539,21 +480,21 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLk-ge-ifA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-234" y="373"/>
+            <point key="canvasLocation" x="101" y="731"/>
         </scene>
-        <!--Bombe Loading View Controller-->
+        <!--Bombe Results-->
         <scene sceneID="D5i-oy-lRt">
             <objects>
-                <viewController id="qjQ-w1-zm6" customClass="BombeLoadingViewController" customModule="iEnigma" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qjQ-w1-zm6" customClass="BombeLoadingViewController" customModule="Leonard_Mehlig" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pUX-4O-Hqa"/>
                         <viewControllerLayoutGuide type="bottom" id="M5E-eF-6cu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8cs-vn-Ucr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kon-kv-TSD" customClass="BombeDrumButton" customModule="iEnigma" customModuleProvider="target">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kon-kv-TSD" customClass="BombeDrumButton" customModule="Leonard_Mehlig" customModuleProvider="target">
                                 <rect key="frame" x="200" y="392" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="WId-cj-doH"/>
@@ -573,21 +514,21 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcl-H3-diz">
-                                <rect key="frame" x="16" y="28" width="568" height="79"/>
-                                <string key="text">All Enigma-Settings that can decrypt a part of the ciphertext into the guesssed word will appear in the list below. By tapping on them you set them as the current Enigma-Setting. For more infomation about each setting tap the Info-Button on the right.</string>
+                                <rect key="frame" x="16" y="72" width="568" height="79"/>
+                                <string key="text">All Enigma settings that can decrypt a part of the cipher-text into the guesssed word will appear in the list below. Tap one to set it as the Enigma setting. For more infomation about each setting tap the info button on the right.</string>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                 <color key="textColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GVG-IY-7zu">
-                                <rect key="frame" x="0.0" y="115" width="600" height="269"/>
+                                <rect key="frame" x="0.0" y="159" width="600" height="225"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" id="nGR-EJ-bkY">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGR-EJ-bkY" id="NRt-Od-8rE">
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGR-EJ-bkY" id="NRt-Od-8rE">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pne-Yy-8By">
@@ -597,6 +538,7 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="tintColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pne-Yy-8By" secondAttribute="trailing" id="00l-Z4-Djr"/>
@@ -642,6 +584,9 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Bombe Results" id="tcf-E6-1Lb">
+                        <barButtonItem key="backBarButtonItem" title="Results" id="9wa-sc-VoZ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="drum" destination="Kon-kv-TSD" id="7Wd-sa-Lxl"/>
                         <outlet property="resultTableView" destination="GVG-IY-7zu" id="ZYy-4L-SwJ"/>
@@ -649,12 +594,12 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40M-6x-5jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="494" y="-72"/>
+            <point key="canvasLocation" x="746" y="99"/>
         </scene>
         <!--Bombe Enigma Details Table View Controller-->
         <scene sceneID="PkA-rE-fcQ">
             <objects>
-                <tableViewController id="OqT-5e-b6p" customClass="BombeEnigmaDetailsTableViewController" customModule="iEnigma" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="OqT-5e-b6p" customClass="BombeEnigmaDetailsTableViewController" customModule="Leonard_Mehlig" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="EqU-MR-RmO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -698,8 +643,8 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EhF-ag-vaX" id="IiY-Vn-Qnm">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GB HE TC DW" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5d-3v-iF4">
-                                                    <rect key="frame" x="16" y="8" width="568" height="27"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GB HE TC DW" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5d-3v-iF4">
+                                                    <rect key="frame" x="8" y="8" width="584" height="27"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                                     <color key="textColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -708,8 +653,8 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="P5d-3v-iF4" secondAttribute="bottom" id="HqO-8K-3mV"/>
                                                 <constraint firstItem="P5d-3v-iF4" firstAttribute="top" secondItem="IiY-Vn-Qnm" secondAttribute="topMargin" id="fuq-Tf-H8F"/>
-                                                <constraint firstItem="P5d-3v-iF4" firstAttribute="leading" secondItem="IiY-Vn-Qnm" secondAttribute="leadingMargin" constant="8" id="gWh-vp-hwz"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="P5d-3v-iF4" secondAttribute="trailing" constant="8" id="xCa-ii-TRz"/>
+                                                <constraint firstItem="P5d-3v-iF4" firstAttribute="leading" secondItem="IiY-Vn-Qnm" secondAttribute="leadingMargin" id="gWh-vp-hwz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="P5d-3v-iF4" secondAttribute="trailing" id="xCa-ii-TRz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -883,12 +828,12 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGU-uC-O37" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1214" y="-53"/>
+            <point key="canvasLocation" x="1490" y="131"/>
         </scene>
         <!--Bombe-Settings-->
         <scene sceneID="cKJ-4x-y8r">
             <objects>
-                <tableViewController title="Bombe-Settings" id="bJA-K3-23H" customClass="BombeSettingViewController" customModule="iEnigma" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Bombe-Settings" id="bJA-K3-23H" customClass="BombeSettingViewController" customModule="Leonard_Mehlig" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="613-a8-CZG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -925,9 +870,9 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                         </segue>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="e.g. APPLEWWDC" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mtc-iL-yZo">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="e.g. APPLEWWDC" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mtc-iL-yZo">
                                                     <rect key="frame" x="142" y="8" width="416" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
@@ -964,16 +909,6 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="z4C-7a-7rp">
-                                                    <rect key="frame" x="185" y="8" width="355" height="83"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="tintColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="bJA-K3-23H" id="9qk-uu-cgV"/>
-                                                    </connections>
-                                                </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H8-LH-Two">
                                                     <rect key="frame" x="548" y="28" width="44" height="44"/>
                                                     <constraints>
@@ -988,12 +923,25 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                         <action selector="pasteEncodedText:" destination="bJA-K3-23H" eventType="touchUpInside" id="RjR-HJ-VyZ"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enigma-Ciphertext:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqG-ZB-PEH">
-                                                    <rect key="frame" x="16" y="40" width="161" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enigma Cipher-text:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqG-ZB-PEH">
+                                                    <rect key="frame" x="16" y="8" width="98" height="83"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="0VA-kr-gld"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="z4C-7a-7rp">
+                                                    <rect key="frame" x="122" y="8" width="418" height="83"/>
+                                                    <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="bJA-K3-23H" id="9qk-uu-cgV"/>
+                                                    </connections>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.23921568630000001" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -1005,10 +953,12 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                 <constraint firstItem="6H8-LH-Two" firstAttribute="centerY" secondItem="z4C-7a-7rp" secondAttribute="centerY" id="KMO-CO-979"/>
                                                 <constraint firstItem="6H8-LH-Two" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z4C-7a-7rp" secondAttribute="top" id="Sxh-rt-VoP"/>
                                                 <constraint firstItem="TqG-ZB-PEH" firstAttribute="leading" secondItem="22L-wx-T8A" secondAttribute="leadingMargin" constant="8" id="Vxl-CN-B6o"/>
+                                                <constraint firstItem="TqG-ZB-PEH" firstAttribute="bottom" secondItem="22L-wx-T8A" secondAttribute="bottomMargin" id="Yf9-xG-b9W"/>
                                                 <constraint firstItem="z4C-7a-7rp" firstAttribute="bottom" secondItem="22L-wx-T8A" secondAttribute="bottomMargin" id="ZgE-5I-Yx4"/>
                                                 <constraint firstItem="z4C-7a-7rp" firstAttribute="top" secondItem="22L-wx-T8A" secondAttribute="topMargin" id="clv-Zd-5un"/>
                                                 <constraint firstItem="6H8-LH-Two" firstAttribute="trailing" secondItem="22L-wx-T8A" secondAttribute="trailingMargin" id="fSt-G3-IpA"/>
                                                 <constraint firstItem="z4C-7a-7rp" firstAttribute="leading" secondItem="TqG-ZB-PEH" secondAttribute="trailing" constant="8" symbolic="YES" id="hWJ-EL-RB8"/>
+                                                <constraint firstItem="TqG-ZB-PEH" firstAttribute="top" secondItem="22L-wx-T8A" secondAttribute="topMargin" id="m81-sm-PUH"/>
                                                 <constraint firstItem="6H8-LH-Two" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="z4C-7a-7rp" secondAttribute="bottom" id="uzV-PI-KAy"/>
                                             </constraints>
                                             <variation key="default">
@@ -1068,7 +1018,7 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nes-yC-SHX">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nes-yC-SHX">
                                                     <rect key="frame" x="543" y="6" width="51" height="31"/>
                                                     <color key="tintColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="onTintColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1112,7 +1062,7 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotor Positions (slow):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtx-H1-Eb5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Rotor Positions (slow):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtx-H1-Eb5">
                                                     <rect key="frame" x="16" y="11" width="186" height="21"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1156,56 +1106,6 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="osl-Ov-TRm">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="osl-Ov-TRm" id="hDT-nF-qYz">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotor Offset (slow):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhV-kt-T4U">
-                                                    <rect key="frame" x="16" y="11" width="159" height="21"/>
-                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Iir-tQ-5zt">
-                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
-                                                    <color key="tintColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="onTintColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <connections>
-                                                        <action selector="settingsSwitchChanged:" destination="bJA-K3-23H" eventType="valueChanged" id="mUD-VJ-B18"/>
-                                                    </connections>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A, A, A" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xf-Du-87T">
-                                                    <rect key="frame" x="479" y="11" width="56" height="21"/>
-                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                                                    <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.23921568630000001" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="2xf-Du-87T" firstAttribute="top" secondItem="hDT-nF-qYz" secondAttribute="topMargin" constant="3" id="3pQ-m3-JUn"/>
-                                                <constraint firstItem="2xf-Du-87T" firstAttribute="baseline" secondItem="PhV-kt-T4U" secondAttribute="baseline" id="CmN-55-uHw"/>
-                                                <constraint firstItem="Iir-tQ-5zt" firstAttribute="top" secondItem="hDT-nF-qYz" secondAttribute="topMargin" constant="-2" id="DuA-cp-9W1"/>
-                                                <constraint firstItem="Iir-tQ-5zt" firstAttribute="trailing" secondItem="hDT-nF-qYz" secondAttribute="trailingMargin" id="Nmb-6q-0VK"/>
-                                                <constraint firstItem="2xf-Du-87T" firstAttribute="trailing" secondItem="hDT-nF-qYz" secondAttribute="trailingMargin" id="goa-Bu-5wH"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="PhV-kt-T4U" secondAttribute="bottom" constant="3" id="jJu-WY-cuh"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Iir-tQ-5zt" secondAttribute="bottom" constant="-2" id="k5L-TC-VeE"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="2xf-Du-87T" secondAttribute="bottom" constant="3" id="k6Q-RV-uJ7"/>
-                                                <constraint firstItem="PhV-kt-T4U" firstAttribute="leading" secondItem="hDT-nF-qYz" secondAttribute="leadingMargin" constant="8" id="k6a-rJ-q5K"/>
-                                                <constraint firstItem="2xf-Du-87T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PhV-kt-T4U" secondAttribute="trailing" constant="8" symbolic="YES" id="mIw-x6-EEG"/>
-                                                <constraint firstItem="Iir-tQ-5zt" firstAttribute="leading" secondItem="2xf-Du-87T" secondAttribute="trailing" constant="8" symbolic="YES" id="vMO-pu-8aq"/>
-                                                <constraint firstItem="PhV-kt-T4U" firstAttribute="top" secondItem="hDT-nF-qYz" secondAttribute="topMargin" constant="3" id="zn9-o9-V9N"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="goa-Bu-5wH"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ddw-fO-woN">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ddw-fO-woN" id="yN2-vU-Iea">
@@ -1218,7 +1118,7 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7wg-yV-frH">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7wg-yV-frH">
                                                     <rect key="frame" x="543" y="6" width="51" height="31"/>
                                                     <color key="tintColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="onTintColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1267,7 +1167,10 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approximate max. time needed:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59R-sY-vI0">
-                                                    <rect key="frame" x="16" y="8" width="261" height="63"/>
+                                                    <rect key="frame" x="16" y="8" width="157" height="63"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="170" id="p0t-pC-bey"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1275,8 +1178,8 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                         <rect key="frame" x="16" y="8" width="198" height="63"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CQ-Uw-L7O">
-                                                    <rect key="frame" x="488" y="8" width="33" height="63"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5CQ-Uw-L7O">
+                                                    <rect key="frame" x="501" y="8" width="20" height="63"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                                     <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1284,7 +1187,7 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                         <rect key="frame" x="279" y="8" width="42" height="63"/>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ci-0l-sTp" customClass="BombeDrumButton" customModule="iEnigma" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ci-0l-sTp" customClass="BombeDrumButton" customModule="Leonard_Mehlig" customModuleProvider="target">
                                                     <rect key="frame" x="529" y="8" width="63" height="63"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="6ci-0l-sTp" secondAttribute="height" id="Ho4-ip-DYg"/>
@@ -1302,7 +1205,7 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="qjQ-w1-zm6" kind="custom" identifier="drumSegue" customClass="ZoomSegue" customModule="iEnigma" customModuleProvider="target" id="5sZ-KV-ozw"/>
+                                                        <segue destination="qjQ-w1-zm6" kind="show" identifier="drumSegue" id="5sZ-KV-ozw"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1325,8 +1228,9 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Bombe" id="h4i-lL-yX5"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationItem key="navigationItem" title="The Bombe" id="h4i-lL-yX5">
+                        <barButtonItem key="backBarButtonItem" title="Bombe" id="A0C-hu-vuS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="encodedTextView" destination="z4C-7a-7rp" id="hfq-7r-pov"/>
                         <outlet property="guessedWordTextField" destination="mtc-iL-yZo" id="Pyi-C8-2IQ"/>
@@ -1334,8 +1238,6 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                         <outlet property="reflectorLabel" destination="pTZ-a8-Y6J" id="4TV-Lh-0yH"/>
                         <outlet property="reflectorSwitch" destination="7wg-yV-frH" id="EHz-dA-PJF"/>
                         <outlet property="rotorLabel" destination="P4g-qq-qms" id="4Lo-E9-5Zp"/>
-                        <outlet property="rotorOffsetLabel" destination="2xf-Du-87T" id="Bqb-A5-che"/>
-                        <outlet property="rotorOffsetSwitch" destination="Iir-tQ-5zt" id="STW-AW-2Kr"/>
                         <outlet property="rotorPositionLabel" destination="fv1-Gt-sti" id="dp8-Du-g1e"/>
                         <outlet property="rotorPositionSwitch" destination="TXk-D6-vj4" id="p04-gC-qog"/>
                         <outlet property="rotorSwitch" destination="nes-yC-SHX" id="yD8-Lz-JHA"/>
@@ -1344,32 +1246,336 @@ For more information about the Enigma visit: en.wikipedia.org/wiki/Enigma_machin
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTC-bF-3yY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-156" y="-72"/>
+            <point key="canvasLocation" x="56" y="109"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="wj0-dk-LcQ">
+        <!--About View Controller-->
+        <scene sceneID="3y1-6P-dgr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O3f-sG-sNX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZFI-2j-NJS"/>
+                <viewController storyboardIdentifier="aboutVC" id="PCR-Vy-tL1" customClass="AboutViewController" customModule="Leonard_Mehlig" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JPg-HS-vbL"/>
+                        <viewControllerLayoutGuide type="bottom" id="mhL-BE-WuU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gha-aT-5Is">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfz-tf-0K2">
+                                <rect key="frame" x="50" y="94" width="500" height="481"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5P-kL-E6O">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="494"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmP-5d-UUQ" customClass="EnigmaFillingSubviewView" customModule="Leonard_Mehlig" customModuleProvider="target">
+                                                <rect key="frame" x="175" y="324" width="150" height="150"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="750" constant="150" id="2S1-eG-B6M"/>
+                                                    <constraint firstAttribute="width" secondItem="cmP-5d-UUQ" secondAttribute="height" id="sjf-aV-CPW"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle 1:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD7-eo-frc">
+                                                <rect key="frame" x="20" y="53" width="90" height="21"/>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7t-Oy-DhT">
+                                                <rect key="frame" x="20" y="20" width="460" height="25"/>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNg-IF-UuF">
+                                                <rect key="frame" x="20" y="82" width="460" height="157"/>
+                                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit risus pellentesque felis efficitur vulputate. In a interdum leo. Fusce auctor sodales justo, eu pharetra urna laoreet et. Aliquam at nibh ligula. Morbi aliquam sed nunc in rhoncus. Aliquam malesuada ultricies egestas. Nunc eget congue magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel commodo mauris, non tincidunt sem.</string>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle 2:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKq-2d-ouX">
+                                                <rect key="frame" x="20" y="247" width="90" height="21"/>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit risu" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRm-Pr-dur">
+                                                <rect key="frame" x="22" y="276" width="457" height="40"/>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="BRm-Pr-dur" secondAttribute="centerX" id="1Fj-1t-J9C"/>
+                                            <constraint firstAttribute="width" constant="458" id="6KH-Hy-egq"/>
+                                            <constraint firstAttribute="centerX" secondItem="cmP-5d-UUQ" secondAttribute="centerX" id="Ak0-El-qDV"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BRm-Pr-dur" secondAttribute="trailing" constant="20" symbolic="YES" id="CKs-bb-9va"/>
+                                            <constraint firstItem="cmP-5d-UUQ" firstAttribute="top" secondItem="VKq-2d-ouX" secondAttribute="bottom" constant="26" id="FF2-gz-qBm"/>
+                                            <constraint firstItem="cmP-5d-UUQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y5P-kL-E6O" secondAttribute="leading" constant="20" symbolic="YES" id="Fi4-MC-MeD"/>
+                                            <constraint firstItem="BRm-Pr-dur" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y5P-kL-E6O" secondAttribute="leading" constant="20" symbolic="YES" id="HET-Z1-9Fg"/>
+                                            <constraint firstItem="M7t-Oy-DhT" firstAttribute="top" secondItem="Y5P-kL-E6O" secondAttribute="top" constant="20" symbolic="YES" id="Kpe-X2-tvM"/>
+                                            <constraint firstItem="pD7-eo-frc" firstAttribute="leading" secondItem="Y5P-kL-E6O" secondAttribute="leading" constant="20" symbolic="YES" id="LK8-5V-ls4"/>
+                                            <constraint firstItem="pD7-eo-frc" firstAttribute="top" secondItem="M7t-Oy-DhT" secondAttribute="bottom" constant="8" symbolic="YES" id="M6E-Yx-otL"/>
+                                            <constraint firstAttribute="trailing" secondItem="M7t-Oy-DhT" secondAttribute="trailing" constant="20" symbolic="YES" id="MY6-x3-mHP"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cmP-5d-UUQ" secondAttribute="trailing" constant="20" symbolic="YES" id="RlX-5b-o6F"/>
+                                            <constraint firstItem="CNg-IF-UuF" firstAttribute="top" secondItem="pD7-eo-frc" secondAttribute="bottom" constant="8" symbolic="YES" id="SwL-jT-rcp"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VKq-2d-ouX" secondAttribute="trailing" constant="20" symbolic="YES" id="TEI-Ef-gBS"/>
+                                            <constraint firstItem="BRm-Pr-dur" firstAttribute="top" secondItem="VKq-2d-ouX" secondAttribute="bottom" constant="8" symbolic="YES" id="XDi-Ca-ho0"/>
+                                            <constraint firstItem="M7t-Oy-DhT" firstAttribute="leading" secondItem="Y5P-kL-E6O" secondAttribute="leading" constant="20" symbolic="YES" id="YKF-BW-nH0"/>
+                                            <constraint firstAttribute="bottom" secondItem="cmP-5d-UUQ" secondAttribute="bottom" constant="20" symbolic="YES" id="cLk-nm-pu4"/>
+                                            <constraint firstItem="cmP-5d-UUQ" firstAttribute="top" secondItem="CNg-IF-UuF" secondAttribute="bottom" constant="8" symbolic="YES" id="fEb-vO-4NG"/>
+                                            <constraint firstItem="CNg-IF-UuF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y5P-kL-E6O" secondAttribute="leading" constant="20" symbolic="YES" id="fuu-3d-XQs"/>
+                                            <constraint firstAttribute="centerX" secondItem="CNg-IF-UuF" secondAttribute="centerX" id="k2J-QE-OX9"/>
+                                            <constraint firstAttribute="height" constant="600" id="mw4-SV-uvH"/>
+                                            <constraint firstItem="cmP-5d-UUQ" firstAttribute="top" secondItem="BRm-Pr-dur" secondAttribute="bottom" constant="8" symbolic="YES" id="sTW-xo-pdr"/>
+                                            <constraint firstItem="VKq-2d-ouX" firstAttribute="leading" secondItem="Y5P-kL-E6O" secondAttribute="leading" constant="20" symbolic="YES" id="uCK-DK-P3m"/>
+                                            <constraint firstItem="VKq-2d-ouX" firstAttribute="top" secondItem="CNg-IF-UuF" secondAttribute="bottom" constant="8" symbolic="YES" id="wzz-yw-ghC"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pD7-eo-frc" secondAttribute="trailing" constant="20" symbolic="YES" id="xi1-VD-qBV"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CNg-IF-UuF" secondAttribute="trailing" constant="20" symbolic="YES" id="zif-w1-GUS"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="6KH-Hy-egq"/>
+                                                <exclude reference="mw4-SV-uvH"/>
+                                                <exclude reference="FF2-gz-qBm"/>
+                                                <exclude reference="fEb-vO-4NG"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="0.83999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Y5P-kL-E6O" secondAttribute="trailing" id="2iW-hI-oBa"/>
+                                    <constraint firstItem="Y5P-kL-E6O" firstAttribute="top" secondItem="Kfz-tf-0K2" secondAttribute="top" id="SXi-sW-Z5S"/>
+                                    <constraint firstAttribute="bottom" secondItem="Y5P-kL-E6O" secondAttribute="bottom" id="jm2-x7-GEK"/>
+                                    <constraint firstItem="Y5P-kL-E6O" firstAttribute="leading" secondItem="Kfz-tf-0K2" secondAttribute="leading" id="m8z-Sc-3cH"/>
+                                    <constraint firstAttribute="width" secondItem="Y5P-kL-E6O" secondAttribute="width" id="wSt-Yw-Hbz"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="PCR-Vy-tL1" id="6vv-yl-3M2"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Kfz-tf-0K2" secondAttribute="trailing" constant="50" id="HcE-7g-68g"/>
+                            <constraint firstItem="Kfz-tf-0K2" firstAttribute="top" secondItem="gha-aT-5Is" secondAttribute="top" constant="94" id="kCa-p7-RgQ"/>
+                            <constraint firstItem="mhL-BE-WuU" firstAttribute="top" secondItem="Kfz-tf-0K2" secondAttribute="bottom" constant="25" id="xHg-se-kIw"/>
+                            <constraint firstItem="Kfz-tf-0K2" firstAttribute="leading" secondItem="gha-aT-5Is" secondAttribute="leading" constant="50" id="zTa-nS-FQ2"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="baseScrollView" destination="Kfz-tf-0K2" id="bsu-1M-ccP"/>
+                        <outlet property="body2Label" destination="BRm-Pr-dur" id="r9a-JZ-tUi"/>
+                        <outlet property="bodyLabel" destination="CNg-IF-UuF" id="ozf-Z2-eKG"/>
+                        <outlet property="bottomConstraint" destination="xHg-se-kIw" id="VVp-Ij-ICv"/>
+                        <outlet property="bottomContentView" destination="cmP-5d-UUQ" id="42J-0K-s79"/>
+                        <outlet property="leadingConstraint" destination="zTa-nS-FQ2" id="ORv-yT-Pmz"/>
+                        <outlet property="subtitle2Label" destination="VKq-2d-ouX" id="X34-K4-a84"/>
+                        <outlet property="subtitleLabel" destination="pD7-eo-frc" id="Xeh-qg-6hV"/>
+                        <outlet property="titleLabel" destination="M7t-Oy-DhT" id="4pc-vV-MJb"/>
+                        <outlet property="topConstraint" destination="kCa-p7-RgQ" id="3aF-0x-YqB"/>
+                        <outlet property="trainlingConstraint" destination="HcE-7g-68g" id="zUq-3a-fHP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wt1-9a-ZeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-669" y="-644"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="iyy-Zp-0fZ">
+            <objects>
+                <viewController id="dGu-Ki-XES" customClass="HomeViewController" customModule="Leonard_Mehlig" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F62-iv-Af3"/>
+                        <viewControllerLayoutGuide type="bottom" id="IKz-Wp-Gc4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a6e-hR-PG4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bombe_background" translatesAutoresizingMaskIntoConstraints="NO" id="PpN-T8-sdF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="18000" placeholderIntrinsicHeight="580" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMC-Oy-U7R">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAT-qZ-FCE">
+                                        <rect key="frame" x="0.0" y="0.0" width="1800" height="600"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gVo-Nq-Ozo">
+                                            <rect key="frame" x="0.0" y="0.0" width="1800" height="600"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUr-Ck-Wew" userLabel="2">
+                                                    <rect key="frame" x="600" y="0.0" width="600" height="600"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="eUr-Ck-Wew" secondAttribute="height" multiplier="30:29" id="oFd-Ka-KOi"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="oFd-Ka-KOi"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <segue destination="PCR-Vy-tL1" kind="embed" identifier="meEmbed" id="AqW-fc-wxy"/>
+                                                    </connections>
+                                                </containerView>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avK-CS-3gH" userLabel="3">
+                                                    <rect key="frame" x="1200" y="0.0" width="600" height="600"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="avK-CS-3gH" secondAttribute="height" multiplier="30:29" id="16l-ki-BoU"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="16l-ki-BoU"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <segue destination="PCR-Vy-tL1" kind="embed" identifier="bombeEmbed" id="dgv-AH-qxM"/>
+                                                    </connections>
+                                                </containerView>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBE-X1-i8X" userLabel="1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="MBE-X1-i8X" secondAttribute="height" multiplier="30:29" id="A4C-LJ-RKR"/>
+                                                        <constraint firstAttribute="width" constant="600" id="nYV-Ct-7ka"/>
+                                                        <constraint firstAttribute="width" constant="600" placeholder="YES" id="sAB-ea-G8a"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="A4C-LJ-RKR"/>
+                                                            <exclude reference="sAB-ea-G8a"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <segue destination="PCR-Vy-tL1" kind="embed" identifier="enigmaEmbed" id="AI5-7M-bgW"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="width" secondItem="eUr-Ck-Wew" secondAttribute="width" id="2Qj-KB-Zv9"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="leading" secondItem="gVo-Nq-Ozo" secondAttribute="leading" id="3Zz-Sl-6Z9"/>
+                                                <constraint firstAttribute="bottom" secondItem="MBE-X1-i8X" secondAttribute="bottom" id="6qM-Do-YVD"/>
+                                                <constraint firstAttribute="centerX" secondItem="eUr-Ck-Wew" secondAttribute="centerX" id="85w-2H-yKe"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="height" secondItem="eUr-Ck-Wew" secondAttribute="height" id="Cpb-jp-oJh"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="leading" secondItem="gVo-Nq-Ozo" secondAttribute="leading" id="Cu7-DD-hV0"/>
+                                                <constraint firstItem="avK-CS-3gH" firstAttribute="height" secondItem="MBE-X1-i8X" secondAttribute="height" id="Dn5-sW-xM2"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="leading" secondItem="avK-CS-3gH" secondAttribute="trailing" id="Ow5-wS-8ZZ"/>
+                                                <constraint firstItem="eUr-Ck-Wew" firstAttribute="top" secondItem="gVo-Nq-Ozo" secondAttribute="top" id="Tnm-VB-POu"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="top" secondItem="eUr-Ck-Wew" secondAttribute="bottom" id="WJS-8j-qlU"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="trailing" secondItem="eUr-Ck-Wew" secondAttribute="leading" id="YCA-m1-y88"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="top" secondItem="gVo-Nq-Ozo" secondAttribute="top" id="ZVF-FI-phg"/>
+                                                <constraint firstAttribute="trailing" secondItem="avK-CS-3gH" secondAttribute="trailing" id="hDZ-K9-urN"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="top" secondItem="avK-CS-3gH" secondAttribute="bottom" id="ioA-y6-NbS"/>
+                                                <constraint firstItem="eUr-Ck-Wew" firstAttribute="width" secondItem="MBE-X1-i8X" secondAttribute="width" id="nSa-hr-LLo"/>
+                                                <constraint firstItem="avK-CS-3gH" firstAttribute="leading" secondItem="eUr-Ck-Wew" secondAttribute="trailing" id="o5A-va-9sN"/>
+                                                <constraint firstItem="avK-CS-3gH" firstAttribute="height" secondItem="eUr-Ck-Wew" secondAttribute="height" id="qfz-97-Vab"/>
+                                                <constraint firstItem="avK-CS-3gH" firstAttribute="top" secondItem="gVo-Nq-Ozo" secondAttribute="top" id="rUN-rh-W25"/>
+                                                <constraint firstItem="MBE-X1-i8X" firstAttribute="top" secondItem="avK-CS-3gH" secondAttribute="bottom" id="xGC-f8-DhI"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Cpb-jp-oJh"/>
+                                                    <exclude reference="Cu7-DD-hV0"/>
+                                                    <exclude reference="Ow5-wS-8ZZ"/>
+                                                    <exclude reference="WJS-8j-qlU"/>
+                                                    <exclude reference="ioA-y6-NbS"/>
+                                                    <exclude reference="xGC-f8-DhI"/>
+                                                    <exclude reference="Dn5-sW-xM2"/>
+                                                    <exclude reference="qfz-97-Vab"/>
+                                                    <exclude reference="nSa-hr-LLo"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" secondItem="eUr-Ck-Wew" secondAttribute="height" id="pfc-cN-rhL"/>
+                                        </constraints>
+                                        <blurEffect style="light"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="pfc-cN-rhL"/>
+                                            </mask>
+                                        </variation>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="eUr-Ck-Wew" secondAttribute="height" id="0sV-ZK-ZgH"/>
+                                    <constraint firstItem="avK-CS-3gH" firstAttribute="height" secondItem="XMC-Oy-U7R" secondAttribute="height" id="1Yb-yD-3bH"/>
+                                    <constraint firstItem="mAT-qZ-FCE" firstAttribute="leading" secondItem="XMC-Oy-U7R" secondAttribute="leading" id="8aR-cg-U5g"/>
+                                    <constraint firstItem="mAT-qZ-FCE" firstAttribute="top" secondItem="XMC-Oy-U7R" secondAttribute="top" id="8qA-9W-JlS"/>
+                                    <constraint firstAttribute="height" secondItem="MBE-X1-i8X" secondAttribute="height" id="rpF-9C-QMp"/>
+                                    <constraint firstAttribute="bottom" secondItem="mAT-qZ-FCE" secondAttribute="bottom" id="sbJ-fr-D3f"/>
+                                    <constraint firstAttribute="trailing" secondItem="mAT-qZ-FCE" secondAttribute="trailing" id="xaz-BU-ZPF"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="dGu-Ki-XES" id="A9t-2M-h1k"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="XMC-Oy-U7R" secondAttribute="bottom" id="8zl-z1-cUz"/>
+                            <constraint firstItem="PpN-T8-sdF" firstAttribute="top" secondItem="a6e-hR-PG4" secondAttribute="topMargin" id="DPj-ND-nK2"/>
+                            <constraint firstItem="XMC-Oy-U7R" firstAttribute="leading" secondItem="a6e-hR-PG4" secondAttribute="leadingMargin" constant="-16" id="F4Q-dJ-P0G"/>
+                            <constraint firstAttribute="trailing" secondItem="PpN-T8-sdF" secondAttribute="trailing" id="OYg-QX-aav"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XMC-Oy-U7R" secondAttribute="trailing" constant="-16" id="Ubf-Yp-puI"/>
+                            <constraint firstItem="XMC-Oy-U7R" firstAttribute="leading" secondItem="a6e-hR-PG4" secondAttribute="leading" id="Uhp-Hw-F8a"/>
+                            <constraint firstItem="IKz-Wp-Gc4" firstAttribute="top" secondItem="PpN-T8-sdF" secondAttribute="bottom" id="Vx1-lS-v5Z"/>
+                            <constraint firstItem="XMC-Oy-U7R" firstAttribute="top" secondItem="F62-iv-Af3" secondAttribute="top" id="cKH-0A-bkd"/>
+                            <constraint firstItem="XMC-Oy-U7R" firstAttribute="top" secondItem="a6e-hR-PG4" secondAttribute="topMargin" id="iYj-zs-FaJ"/>
+                            <constraint firstItem="PpN-T8-sdF" firstAttribute="leading" secondItem="a6e-hR-PG4" secondAttribute="leading" id="jOK-dI-M3K"/>
+                            <constraint firstAttribute="trailing" secondItem="XMC-Oy-U7R" secondAttribute="trailing" id="oBe-PI-ZdK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="F4Q-dJ-P0G"/>
+                                <exclude reference="Ubf-Yp-puI"/>
+                                <exclude reference="cKH-0A-bkd"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="Odc-bx-dZL"/>
+                    <connections>
+                        <outlet property="scrollView" destination="XMC-Oy-U7R" id="fRk-d5-2fS"/>
+                        <outlet property="widthConstraint" destination="nYV-Ct-7ka" id="7AT-xj-7c1"/>
+                        <segue destination="bJA-K3-23H" kind="show" identifier="bombePush" id="hRi-7W-fD8"/>
+                        <segue destination="nvg-dQ-5Cz" kind="show" identifier="enigmaPush" id="tTe-5o-xYv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qt6-at-lDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-716" y="226"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2eL-f5-oht">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mGx-qw-hUI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="6dh-QH-yD3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="akL-aD-tmn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bJA-K3-23H" kind="relationship" relationship="rootViewController" id="Wik-ZP-6gd"/>
+                        <segue destination="dGu-Ki-XES" kind="relationship" relationship="rootViewController" id="2dv-yQ-XML"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Hu-04-CkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rCm-HF-vkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-843" y="-72"/>
+            <point key="canvasLocation" x="-1355" y="109"/>
         </scene>
     </scenes>
     <resources>
-        <image name="EnimgaTapIcon" width="27" height="27"/>
-        <image name="EnimgaTapIconSelected" width="27" height="27"/>
+        <image name="bombe_background" width="2026" height="1619"/>
         <image name="past_icon" width="44" height="44"/>
     </resources>
-    <color key="tintColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <inferredMetricsTieBreakers>
+        <segue reference="AI5-7M-bgW"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.28235294119999998" green="0.2784313725" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

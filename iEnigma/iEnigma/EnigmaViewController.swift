@@ -248,7 +248,7 @@ class EnigmaViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     
     @IBOutlet var enigmaViewTapRecognizer: UITapGestureRecognizer!
-    @IBOutlet weak var settingBaseView: EnigmaSettingBaseView!
+    @IBOutlet weak var settingBaseView: EnigmaFillingSubviewView!
     @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
     @IBOutlet weak var settingsHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var settingsTrailingConstraint: NSLayoutConstraint!
@@ -434,9 +434,9 @@ class EnigmaViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     
     func updateRotors() {
-        rotor1?.setNeedsDisplay()
-        rotor2?.setNeedsDisplay()
-        rotor3?.setNeedsDisplay()
+        rotor1?.updateText()
+        rotor2?.updateText()
+        rotor3?.updateText()
         enigma = EnigmaSettings.enigmaFromSettings
         reloadEncodedText()
     }
@@ -524,14 +524,11 @@ class EnigmaViewController: UIViewController, UIPopoverPresentationControllerDel
         menuObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIMenuControllerDidHideMenuNotification, object: nil, queue: nil) { _ in
             self.menuDidHide()
         }
-       // if showInfo { performSegueWithIdentifier("enigmaInfo", sender: self) }
-        showInfo = false
+        self.inputText = EnigmaSettings.inputText
     }
-    private var showInfo = true
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
-
+        EnigmaSettings.inputText = self.inputText
         if rotorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(rotorObserver!) }
         if plugboardObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(plugboardObserver!) }
         if reflectorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(reflectorObserver!) }

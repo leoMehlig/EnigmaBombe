@@ -8,12 +8,14 @@
 
 import UIKit
 
-class BombeSettingViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
+class BombeSettingViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate, ZoombleViewRect {
     
     //MARK: - Ciphertext
     var unmatchingParts: [Bombe.StringWithLocation]? {
         didSet {
             matchesLabel.text = "\(unmatchingParts?.count ?? 0) matches"
+            updateTimeNeeded()
+
         }
     }
     
@@ -21,7 +23,7 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
     @IBOutlet weak var encodedTextView: UITextView!
     @IBAction func pasteEncodedText(sender: UIButton) {
         if let text = UIPasteboard.generalPasteboard().string {
-            self.encodedTextView.text = text
+            self.encodedTextView.text = checkTextAndRemoveInvalideCharacters(text, totalString: "", range: NSMakeRange(0, count(text)))
             updateUnmatchingParts()
         }
         
@@ -99,7 +101,6 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
     //MARK: - Settings
     private var rotorObserver: NSObjectProtocol?
     private var rotorPositionObserver: NSObjectProtocol?
-    private var rotorOffsetObserver: NSObjectProtocol?
     private var reflectorObserver: NSObjectProtocol?
     
     override func viewDidAppear(animated: Bool) {
@@ -114,10 +115,7 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
         }
         updateRotorPositons()
         
-        rotorOffsetObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Offset, object: nil, queue: nil) { _ in
-            self.updateRotorOffset()
-        }
-        updateRotorOffset()
+
         
         reflectorObserver = NSNotificationCenter.defaultCenter().addObserverForName(EnigmaSettings.Notifications.Reflector, object: nil, queue: nil) { _ in
             self.updateReflector()
@@ -129,7 +127,6 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
         super.viewDidDisappear(animated)
         if rotorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(rotorObserver!) }
         if rotorPositionObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(rotorPositionObserver!) }
-        if rotorOffsetObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(rotorOffsetObserver!) }
         if reflectorObserver != nil { NSNotificationCenter.defaultCenter().removeObserver(reflectorObserver!) }
         
     }
@@ -141,10 +138,7 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
     private func updateRotorPositons() {
         rotorPositionLabel?.text = EnigmaDisplayer.RotorPositions(EnigmaSettings.rotorPositions)
     }
-    @IBOutlet weak var rotorOffsetLabel: UILabel!
-    private func updateRotorOffset() {
-        rotorOffsetLabel?.text = EnigmaDisplayer.RotorOffsets(EnigmaSettings.rotorOffset)
-    }
+ 
     @IBOutlet weak var reflectorLabel: UILabel!
     private func updateReflector() {
         reflectorLabel.text = String(EnigmaDisplayer.Reflector(EnigmaSettings.reflector))
@@ -152,14 +146,17 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
     
     @IBOutlet weak var rotorSwitch: UISwitch!
     @IBOutlet weak var rotorPositionSwitch: UISwitch!
-    @IBOutlet weak var rotorOffsetSwitch: UISwitch!
     @IBOutlet weak var reflectorSwitch: UISwitch!
     
     @IBAction func settingsSwitchChanged(sender: UISwitch) {
-        //TODO: Time Calculation
+        updateTimeNeeded()
     }
     
     @IBOutlet weak var timeNeededLabel: UILabel!
+    private func updateTimeNeeded() {
+        timeNeededLabel.text = Bombe.timeNeededStringForWords(self.unmatchingParts?.count ?? 0, rotor: rotorSwitch?.on ?? true, ref: reflectorSwitch?.on ?? true, pos: rotorPositionSwitch?.on ?? false)
+        
+    }
     //MARK: - Navigation
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
@@ -190,14 +187,13 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
         }
        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let zoomSegue = segue as? ZoomSegue where segue.identifier == "drumSegue" {
+        if segue.identifier == "drumSegue" {
             if let v = sender as? UIView {
-                zoomSegue.rectToZoomTo = v.convertRect(CGRect(x: v.bounds.width / 4, y: v.bounds.height / 4, width: v.bounds.width / 2, height: v.bounds.height / 2), toView: view)
+                zoomRect = v.convertRect(v.bounds, toView: view)
             }
             if let loadingVC = segue.destinationViewController as? BombeLoadingViewController {
-                loadingVC.bombe = Bombe(rotor: rotorSwitch.on, reflector: reflectorSwitch.on, position: rotorPositionSwitch.on, offset: rotorOffsetSwitch.on)
+                loadingVC.bombe = Bombe(rotor: rotorSwitch.on, reflector: reflectorSwitch.on, position: rotorPositionSwitch.on, offset: false)
                 loadingVC.guessedWord = guessedWordTextField.text
                 loadingVC.unmatchingWords = unmatchingParts
                 loadingVC.ciphertext = encodedTextView.text
@@ -210,5 +206,8 @@ class BombeSettingViewController: UITableViewController, UITextViewDelegate, UIT
         return .None
     }
     
+    
+    var zoomRect: CGRect?
+
     
 }

@@ -56,6 +56,13 @@ class BombeLoadingViewController: UIViewController, BombeCompletionDelegate, UIT
             self.timer?.invalidate()
             self.timer = nil
             self.drum.contentText = "100%"
+            if self.resultEnigmasWithText.isEmpty {
+                let alert = UIAlertController(title: "No Enigma settings found", message: "Please change your Bombe settings or guess another word", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { _ in
+                    self.navigationController?.popViewControllerAnimated(true)
+                    })
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }
         
     }
@@ -110,11 +117,24 @@ class BombeLoadingViewController: UIViewController, BombeCompletionDelegate, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! UITableViewCell
         (cell.viewWithTag(100) as? UILabel)?.text = indexPath.row < resultEnigmasWithText.count ? resultEnigmasWithText[indexPath.row].1 : ""
+        cell.backgroundColor = UIColor.clearColor()
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultEnigmasWithText.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row < resultEnigmasWithText.count {
+            (EnigmaSettings.enigmaFromSettings, EnigmaSettings.inputText) = resultEnigmasWithText[indexPath.row]
+            let alert = UIAlertController(title: "The new Enigma Setting got set", message: "Do you want to return to the start screen", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { _ in
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            })
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel){ _ in })
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     //MARK: - Navigation

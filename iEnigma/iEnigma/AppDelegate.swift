@@ -16,9 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        UITabBar.appearance().barTintColor = Constants.Design.Colors.DarkForeground
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : Constants.Design.Colors.Text], forState: .Selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : Constants.Design.Colors.Foreground], forState: .Normal)
         return true
     }
 
